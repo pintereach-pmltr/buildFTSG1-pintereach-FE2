@@ -12,7 +12,7 @@ function App() {
       <div className="App">
         <Route path="/login" component={LoginPage} />
         <Route path='/register' component={RegisterPage} />
-        <PrivateRoute exact path='/dashboard' component={Dashboard} />
+        <PrivateRoute path='/dashboard' component={Dashboard} />
       </div>
     </Router>
   );

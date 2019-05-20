@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { login } from "../actions/index";
 import { NavLink } from "react-router-dom";
-import bookmark from "./bookmark-black-shape.svg";
 
 class LoginPage extends React.Component {
   state = {
@@ -24,8 +23,8 @@ class LoginPage extends React.Component {
   login = event => {
     event.preventDefault();
     this.props.login(this.state.credentials).then(() => {
-      this.props.history.push("/dashboard");
-    });
+        this.props.history.push('/dashboard/all')
+    })
   };
 
   render() {
@@ -52,10 +51,10 @@ class LoginPage extends React.Component {
             </NavLink>
           </div>
         </div>
-        <form className="login-form">
+        <form className="login-form" onSubmit={this.login}>
           <h1>Log In to Pintereach</h1>
-          <input placeholder="Username" />
-          <input placeholder="Password" />
+          <input name='username' value={this.state.credentials.username} onChange={this.handleChanges} placeholder="Username" />
+          <input name='password' value={this.state.credentials.password} onChange={this.handleChanges}  placeholder="Password" />
           <button>Log In</button>
         </form>
       </div>
