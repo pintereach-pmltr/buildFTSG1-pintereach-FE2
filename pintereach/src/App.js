@@ -4,6 +4,7 @@ import { Route, BrowserRouter as Router } from "react-router-dom";
 import LoginPage from "./components/LoginPage";
 import RegisterPage from './components/RegisterPage'
 import Dashboard from "./components/Dashboard";
+import PrivateRoute from "./PrivateRoute";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
       <div className="App">
         <Route path="/login" component={LoginPage} />
         <Route path='/register' component={RegisterPage} />
-        <Route path='/dashboard' component={Dashboard} />
+        <PrivateRoute exact path='/dashboard' component={Dashboard} />
       </div>
     </Router>
   );

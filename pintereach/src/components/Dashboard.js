@@ -9,7 +9,7 @@ class Dashboard extends React.Component {
         <div className="navbar">
         <div className='logo-box'>
             {" "}
-            <i class="fas fa-bookmark"></i>
+            <i className="fas fa-bookmark"></i>
             <div className="logo">
               <h1>Pintereach</h1>
             </div>
