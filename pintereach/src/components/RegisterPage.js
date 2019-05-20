@@ -20,12 +20,12 @@ class LoginPage extends React.Component {
         })
     }
 
-    // register = event => {
-    //     event.preventDefault();
-    //     this.props.login(this.state.credentials).then(() => {
-    //         this.props.history.push('/dashboard')
-    //     })
-    // }
+    register = event => {
+        event.preventDefault();
+        this.props.register(this.state.credentials).then(() => {
+            this.props.history.push('/dashboard')
+        })
+    }
 
     render() {
         return (
@@ -50,11 +50,11 @@ class LoginPage extends React.Component {
                 </NavLink>
               </div>
             </div>
-            <form className='login-form'>
+            <form className='login-form' onSubmit={this.register}>
             <h1>Register for Pintereach</h1> 
-              <input placeholder='Username' />
-              <input placeholder='Password'/>
-              <button>Register</button>
+              <input placeholder='Username' name='username' value={this.state.credentials.username} onChange={this.handleChanges} />
+              <input placeholder='Password' name='password' value={this.state.credentials.password} onChange={this.handleChanges}/>
+              <button className='register-button'>Register</button>
             </form>
           </div>
         );
@@ -62,11 +62,11 @@ class LoginPage extends React.Component {
     }
 
 const mapStateToProps = state => ({
-    isLoggingIn: state.isLoggingIn
+    isRegistering: state.isRegistering
 })
 
 export default connect(
     mapStateToProps,
-    {  }
+    { register }
   )(LoginPage);
   

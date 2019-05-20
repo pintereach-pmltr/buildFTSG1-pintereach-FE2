@@ -5,6 +5,7 @@ import LoginPage from "./components/LoginPage";
 import RegisterPage from './components/RegisterPage'
 import Dashboard from "./components/Dashboard";
 import PrivateRoute from "./PrivateRoute";
+import IndividualBoard from "./components/IndividualBoard";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route exact path="/" component={LoginPage} />
         <Route path='/register' component={RegisterPage} />
         <PrivateRoute path='/dashboard' component={Dashboard} />
+        <PrivateRoute path='/dashboard/:id' component={IndividualBoard} />
       </div>
     </Router>
   );

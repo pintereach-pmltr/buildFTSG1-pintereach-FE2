@@ -40,7 +40,7 @@ code {
   color: white;
   font-size: 1rem;
   font-family: 'Baloo Bhai', cursive;
-  margin-left: 0.5rem;
+  margin-left: 0.4rem;
 }
 .login-form {
   /* border: 1px solid red; */
@@ -95,7 +95,7 @@ code {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #8D99AE;
+  background: #efefef;
 }
 .sub-link{
   margin: 0 2rem;
@@ -104,7 +104,8 @@ code {
   text-decoration: none;
 }
 .sub-link.active {
-  color: white;
+  color: #4f4f4f;
+  font-weight: bold;
 }
 .logo-box i {
   font-size: 1.5rem;
@@ -115,4 +116,9 @@ code {
   display: flex;
   align-items: center;
   margin-left: 1.2rem;
+}
+.register-button {
+  border: 1px solid #1e90ff;
+  color: #1e90ff;
+  background: none;
 }
