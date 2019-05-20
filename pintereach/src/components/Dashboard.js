@@ -15,7 +15,7 @@ class Dashboard extends React.Component {
             </div>
           </div>
           <div>
-            <NavLink className="nav-link" to="/login">
+            <NavLink className="nav-link" exact to="/">
               Login
             </NavLink>
             <NavLink className="nav-link" to="/register">

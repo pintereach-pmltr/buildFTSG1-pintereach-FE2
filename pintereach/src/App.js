@@ -10,7 +10,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Route path="/login" component={LoginPage} />
+        <Route exact path="/" component={LoginPage} />
         <Route path='/register' component={RegisterPage} />
         <PrivateRoute path='/dashboard' component={Dashboard} />
       </div>
