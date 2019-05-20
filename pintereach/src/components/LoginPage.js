@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { login } from "../actions/index";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import bookmark from "./bookmark-black-shape.svg";
 
 class LoginPage extends React.Component {
   state = {
@@ -29,23 +30,32 @@ class LoginPage extends React.Component {
 
   render() {
     return (
-      <div className='login-container'>
+      <div className="login-container">
         <div className="navbar">
-          <div className="logo">
-            <h1>Pintereach</h1>
+          <div className='logo-box'>
+            {" "}
+            <i class="fas fa-bookmark"></i>
+            <div className="logo">
+              <h1>Pintereach</h1>
+            </div>
           </div>
+
           <div>
-            <Link className="nav-link" to="/login">
+            <NavLink className="nav-link" to="/login">
               Login
-            </Link>
-            <Link className="nav-link" to="/register">
+            </NavLink>
+            <NavLink className="nav-link" to="/register">
               Register
-            </Link>
+            </NavLink>
+            <NavLink className="nav-link" to="/dashboard/all">
+              Dashboard
+            </NavLink>
           </div>
         </div>
-        <form className='login-form'> 
-          <input placeholder='Username' />
-          <input placeholder='Password'/>
+        <form className="login-form">
+          <h1>Log In to Pintereach</h1>
+          <input placeholder="Username" />
+          <input placeholder="Password" />
           <button>Log In</button>
         </form>
       </div>
