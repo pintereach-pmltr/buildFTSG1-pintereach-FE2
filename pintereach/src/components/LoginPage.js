@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import { login } from '../actions/index'
 
 class LoginPage extends React.Component {
     state = {
@@ -39,7 +40,7 @@ class LoginPage extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    isLogginIn: state.isLogginIn
+    isLoggingIn: state.isLoggingIn
 })
 
 export default connect(
