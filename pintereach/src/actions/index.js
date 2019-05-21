@@ -57,7 +57,7 @@ export const getBoards = id => dispatch => {
     axiosWithAuth()
     .get(`https://pintereach0.herokuapp.com/api/boards/${id}`)
     .then(res => {
-        debugger;
+        // debugger;
         console.log(res)
         dispatch({ type: FETCH_BOARDS_SUCCESS, payload: res.data})
     })
@@ -77,9 +77,10 @@ export const postBoard = (board) => dispatch => {
     axiosWithAuth()
     .post(`https://pintereach0.herokuapp.com/api/boards/`, board)
     .then (res => {
-        debugger;
+        // debugger;
         console.log(res)
         dispatch({ type: POST_BOARDS_SUCCESS, payload: res.data})
+        // this.getBoards(id = 1)
     })
     .catch(err => {
         console.log(err)

@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { postBoard } from "../actions";
+import { postBoard, getBoards } from "../actions";
 
 class ArticleForm extends React.Component {
   state = {
@@ -15,6 +15,7 @@ class ArticleForm extends React.Component {
     event.preventDefault();
     if (!this.state.boards) return;
     this.props.postBoard(this.state.boards);
+    this.props.getBoards(5);
     this.setState({
       boards: {
         board_title: "",
@@ -56,5 +57,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { postBoard }
+  { postBoard, getBoards }
 )(ArticleForm);
