@@ -22,9 +22,7 @@ class LoginPage extends React.Component {
 
     register = event => {
         event.preventDefault();
-        this.props.register(this.state.credentials).then(() => {
-            this.props.history.push('/dashboard')
-        })
+        this.props.register(this.state.credentials)
     }
 
     render() {

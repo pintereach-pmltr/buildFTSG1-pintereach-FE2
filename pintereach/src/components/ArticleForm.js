@@ -1,32 +1,32 @@
 import React from "react";
 import { connect } from "react-redux";
-import { postArticles } from '../actions'
+import { postBoard } from '../actions'
 
 class ArticleForm extends React.Component {
     state = {
-        articles: {
+        boards: {
             id: '',
-            article_label: '',
+            board_title: '',
             url: ''
         }
     }
 
-addArticle = event => {
+addBoard = event => {
     event.preventDefault();
-    if (!this.state.articles) return;
-    this.props.postArticles(this.state.articles);
+    if (!this.state.boards) return;
+    this.props.postBoard(this.state.boards);
     this.setState({
-        articles: {
+        boards: {
             id: '',
-            article_label: '', 
-            url: ''
+            board_title: '', 
+            user_id: 1
         }
     })
 }
 
 handleChanges = event => {
     this.setState({
-        articles: {
+        boards: {
             ...this.state.friend,
             [event.target.name]: event.target.value
         }
@@ -36,9 +36,8 @@ handleChanges = event => {
   render() {
     return (
       <div className='form-container'>
-        <form className='friend-form' onSubmit={this.addArticle}>
-          <input required placeholder='Title' name='article_label' value={this.state.articles.article_label} onChange={this.handleChanges}/>
-          <input required placeholder='Url' name='url' value={this.state.articles.url} onChange={this.handleChanges}/>
+        <form className='friend-form' onSubmit={this.addBoard}>
+          <input required placeholder='Board Title' name='board_title' value={this.state.boards.board_title} onChange={this.handleChanges}/>
           <button>Add Article</button>
         </form>
       </div>
@@ -52,5 +51,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { postArticles }
+  { postBoard }
 )(ArticleForm);

@@ -13,8 +13,8 @@ export const login = creds => dispatch => {
     .then(res => {
         // debugger;
         console.log(res)
-        localStorage.setItem('token', res.data.payload);
-        dispatch({ type: LOGIN_SUCCESS, payload: res.data.payload })
+        localStorage.setItem('token', res.data.token);
+        dispatch({ type: LOGIN_SUCCESS, payload: res.data.token })
     })
     .catch(err => {
         console.log(err);
@@ -33,8 +33,8 @@ export const register = creds => dispatch => {
     .post(`https://pintereach0.herokuapp.com/api/auth/register`, creds)
     .then(res => {
         console.log(res)
-        localStorage.setItem('token', res.data.payload)
-        dispatch({ type: LOGIN_SUCCESS, payload: res.data.payload })
+        localStorage.setItem('token', res.data.token)
+        dispatch({ type: LOGIN_SUCCESS, payload: res.data.token })
     })
     .catch(err => {
         console.log(err) 
@@ -71,10 +71,10 @@ export const POST_ARTICLES_START = 'POST_ARTICLES_START'
 export const POST_ARTICLES_SUCCESS = 'POST_ARTICLES_SUCCESS'
 export const POST_ARTICLES_FAIL = 'POST_ARTICLES_FAIL'
 
-export const postArticles = article => dispatch => {
+export const postBoard = board => dispatch => {
     dispatch({ type: POST_ARTICLES_START })
     axiosWithAuth()
-    .post(`https://pintereach0.herokuapp.com/api/boards/`, article)
+    .post(`https://pintereach0.herokuapp.com/api/boards/`, board)
     .then (res => {
         console.log(res)
         dispatch({ type: POST_ARTICLES_SUCCESS, payload: res.data})

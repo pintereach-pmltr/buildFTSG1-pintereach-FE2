@@ -8,8 +8,10 @@ class Dashboard extends React.Component {
   state = {};
 
   componentDidMount(id) {
-      this.props.getBoards(id);
-  }
+    this.props.getBoards(id = 1);
+    console.log(id)
+
+}
 
   logout = event => {
       event.preventDefault();
@@ -28,7 +30,7 @@ class Dashboard extends React.Component {
             </div>
           </div>
           <div>
-            <NavLink className="nav-link" exact to="/">
+            <NavLink onClick={this.logout} className="nav-link" exact to="/">
               Log Out
             </NavLink>
             <NavLink className="nav-link" to="/dashboard">
