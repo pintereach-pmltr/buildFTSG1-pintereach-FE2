@@ -23,8 +23,8 @@ const initialState = {
   addingArticles: false,
   isRegistering: false,
   isLoggingOutl: false,
-  postingArticles: false,
-  user_id: 1
+  postingBoards: false,
+  user_id: localStorage.getItem('user_id')
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -87,12 +87,12 @@ export const rootReducer = (state = initialState, action) => {
       case POST_BOARDS_START:
       return {
           ...state,
-          postingArticles: true,
+          postingBoards: true,
       }
       case POST_BOARDS_SUCCESS:
       return {
           ...state,
-          postingArticles: false,
+          postingBoards: false,
           boards: action.payload
       }
       case POST_BOARDS_FAIL:

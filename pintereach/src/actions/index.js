@@ -70,11 +70,12 @@ export const POST_BOARDS_START = 'POST_BOARDS_START'
 export const POST_BOARDS_SUCCESS = 'POST_BOARDS_SUCCESS'
 export const POST_BOARDS_FAIL = 'POST_BOARDS_FAIL'
 
-export const postBoard = (id, board) => dispatch => {
+export const postBoard = (board) => dispatch => {
     dispatch({ type: POST_BOARDS_START })
-    console.log(id)
+    // console.log(id)
+    console.log(board)
     axiosWithAuth()
-    .post(`https://pintereach0.herokuapp.com/api/boards/${id}`, board)
+    .post(`https://pintereach0.herokuapp.com/api/boards/`, board)
     .then (res => {
         debugger;
         console.log(res)
