@@ -9,9 +9,9 @@ import {
   FETCH_BOARDS_START,
   FETCH_BOARDS_FAIL,
   FETCH_BOARDS_SUCCESS, 
-  POST_ARTICLES_START,
-  POST_ARTICLES_SUCCESS,
-  POST_ARTICLES_FAIL
+  POST_BOARDS_START,
+  POST_BOARDS_SUCCESS,
+  POST_BOARDS_FAIL
 } from "../actions";
 
 const initialState = {
@@ -23,7 +23,8 @@ const initialState = {
   addingArticles: false,
   isRegistering: false,
   isLoggingOutl: false,
-  postingArticles: false
+  postingArticles: false,
+  user_id: 1
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -83,18 +84,18 @@ export const rootReducer = (state = initialState, action) => {
           ...state,
           error: action.payload
       }
-      case POST_ARTICLES_START:
+      case POST_BOARDS_START:
       return {
           ...state,
           postingArticles: true,
       }
-      case POST_ARTICLES_SUCCESS:
+      case POST_BOARDS_SUCCESS:
       return {
           ...state,
           postingArticles: false,
           boards: action.payload
       }
-      case POST_ARTICLES_FAIL:
+      case POST_BOARDS_FAIL:
       return {
           ...state,
           error: action.payload

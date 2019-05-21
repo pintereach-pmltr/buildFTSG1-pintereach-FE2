@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { axiosWithAuth }from '../axiosWithAuth'
-import { router } from 'sw-toolbox';
 
 export const LOGIN_START = 'LOGIN_START'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
@@ -67,20 +66,22 @@ export const getBoards = id => dispatch => {
     })
 }
 
-export const POST_ARTICLES_START = 'POST_ARTICLES_START'
-export const POST_ARTICLES_SUCCESS = 'POST_ARTICLES_SUCCESS'
-export const POST_ARTICLES_FAIL = 'POST_ARTICLES_FAIL'
+export const POST_BOARDS_START = 'POST_BOARDS_START'
+export const POST_BOARDS_SUCCESS = 'POST_BOARDS_SUCCESS'
+export const POST_BOARDS_FAIL = 'POST_BOARDS_FAIL'
 
-export const postBoard = board => dispatch => {
-    dispatch({ type: POST_ARTICLES_START })
+export const postBoard = (id, board) => dispatch => {
+    dispatch({ type: POST_BOARDS_START })
+    console.log(id)
     axiosWithAuth()
-    .post(`https://pintereach0.herokuapp.com/api/boards/`, board)
+    .post(`https://pintereach0.herokuapp.com/api/boards/${id}`, board)
     .then (res => {
+        debugger;
         console.log(res)
-        dispatch({ type: POST_ARTICLES_SUCCESS, payload: res.data})
+        dispatch({ type: POST_BOARDS_SUCCESS, payload: res.data})
     })
     .catch(err => {
         console.log(err)
-        dispatch({ type: POST_ARTICLES_FAIL })
+        dispatch({ type: POST_BOARDS_FAIL })
     })
 }
