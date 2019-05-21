@@ -45,7 +45,7 @@ class LoginPage extends React.Component {
                 <NavLink className="nav-link" to="/register">
                   Register
                 </NavLink>
-                <NavLink className="nav-link" to="/dashboard/all">
+                <NavLink className="nav-link" to="/dashboard">
                   Dashboard
                 </NavLink>
               </div>

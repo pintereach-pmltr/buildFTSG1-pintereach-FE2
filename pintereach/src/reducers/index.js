@@ -1,52 +1,30 @@
-import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL, REGISTER_START, REGISTER_SUCCESS, REGISTER_FAIL } from "../actions";
-import { statement } from "@babel/template";
+import {
+  LOGIN_START,
+  LOGIN_SUCCESS,
+  LOGIN_FAIL,
+  REGISTER_START,
+  REGISTER_SUCCESS,
+  REGISTER_FAIL,
+  LOGGING_OUT, 
+  FETCH_BOARDS_START,
+  FETCH_BOARDS_FAIL,
+  FETCH_BOARDS_SUCCESS, 
+  POST_ARTICLES_START,
+  POST_ARTICLES_SUCCESS,
+  POST_ARTICLES_FAIL
+} from "../actions";
 
 const initialState = {
   boards: [],
   fetchingArticles: false,
+  fetchingBoards: false,
   isLoggingIn: false,
   error: "",
   addingArticles: false,
-  isRegistering: false
+  isRegistering: false,
+  isLoggingOutl: false,
+  postingArticles: false
 };
-initialState.boards = [
-    {
-      id: 1,
-      name: 'Ben',
-      age: 30,
-      email: 'ben@lambdaschool.com'
-    },
-    {
-      id: 2,
-      name: 'Austen',
-      age: 45,
-      email: 'austen@lambdaschool.com'
-    },
-    {
-      id: 3,
-      name: 'Ryan',
-      age: 15,
-      email: 'ryan@lambdaschool.com'
-    },
-    {
-      id: 4,
-      name: 'Dustin',
-      age: 25,
-      email: 'D-munny@lambdaschool.com'
-    },
-    {
-      id: 5,
-      name: 'Sean',
-      age: 35,
-      email: 'sean@lambdaschool.com'
-    },
-    {
-      id: 6,
-      name: 'Michelle',
-      age: 67,
-      email: 'michelle@gmail.com'
-    }
-  ];
 
 export const rootReducer = (state = initialState, action) => {
   // console.log(action.payload)
@@ -70,20 +48,57 @@ export const rootReducer = (state = initialState, action) => {
         isLoggingIn: false
       };
     case REGISTER_START:
-    return {
+      return {
         ...state,
         isRegistering: true
-    }
+      };
     case REGISTER_SUCCESS:
-    return {
+      return {
         ...state,
         isRegistering: false
-    }
+      };
     case REGISTER_FAIL:
-    return {
+      return {
         ...state,
         error: action.payload
-    }
+      };
+      case LOGGING_OUT:
+      return {
+          ...state,
+          isLoggingOut: true
+      }
+      case FETCH_BOARDS_START: 
+      return {
+          ...state,
+          fetchingBoards: true
+      }
+      case FETCH_BOARDS_SUCCESS:
+      return {
+          ...state,
+          fetchingBoards: false,
+          boards: action.payload
+      }
+      case FETCH_BOARDS_FAIL:
+      return {
+          ...state,
+          error: action.payload
+      }
+      case POST_ARTICLES_START:
+      return {
+          ...state,
+          postingArticles: true,
+      }
+      case POST_ARTICLES_SUCCESS:
+      return {
+          ...state,
+          postingArticles: false,
+          boards: action.payload
+      }
+      case POST_ARTICLES_FAIL:
+      return {
+          ...state,
+          error: action.payload
+      }
     default:
       return state;
   }

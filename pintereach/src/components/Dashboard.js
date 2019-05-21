@@ -1,8 +1,21 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect, Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { logout, getBoards } from '../actions'
+import ArticleForm from "./ArticleForm";
 
 class Dashboard extends React.Component {
   state = {};
+
+  componentDidMount(id) {
+      this.props.getBoards(id);
+  }
+
+  logout = event => {
+      event.preventDefault();
+      this.props.logout()
+  }
+
   render() {
     return (
       <div>
@@ -16,26 +29,34 @@ class Dashboard extends React.Component {
           </div>
           <div>
             <NavLink className="nav-link" exact to="/">
-              Login
+              Log Out
             </NavLink>
-            <NavLink className="nav-link" to="/register">
-              Register
-            </NavLink>
-            <NavLink className="nav-link" to="/dashboard/all">
+            <NavLink className="nav-link" to="/dashboard">
               Dashboard
             </NavLink>
           </div>
         </div>
-        <div className="sub-nav-bar">
-          <NavLink className='sub-link' to="/dashboard/all">ALL</NavLink>
-          <NavLink className='sub-link' to="/dashboard/tech">TECH</NavLink>
-          <NavLink className='sub-link' to="/dashboard/science">SCIENCE</NavLink>
-          <NavLink className='sub-link' to="/dashboard/sports">SPORTS</NavLink>
-          <NavLink className='sub-link' to="/dashboard/entertainment">ENTERTAINMENT</NavLink>
+        <div>
+            {this.props.boards.map(board => {
+                return (
+                    <Link to ={`/dashboard/${board.id}`} key={board.id}>
+                        <div>
+                            <h1>{board.board_title}</h1>
+                        </div>
+                    </Link>
+                )
+            })}
         </div>
+        <ArticleForm />
+
       </div>
     );
   }
 }
 
-export default Dashboard;
+const mapStateToProps = state => ({
+    isLoggingOut: state.isLoggingOut,
+    boards: state.boards
+})
+
+export default connect(mapStateToProps, { logout, getBoards }) (Dashboard);
