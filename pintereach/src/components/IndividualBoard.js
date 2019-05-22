@@ -5,19 +5,11 @@ import { getArticles, getBoards, postArticle } from "../actions";
 import ArticleForm from "./ArticleForm";
 
 class IndividualBoard extends React.Component {
-  state = {
-    articles: {
-      article_label: "",
-      url: "",
-      board_id: ''
-    }
-  };
 
   componentDidMount() {
-    const user_id = localStorage.getItem('user id')
+    const user_id = localStorage.getItem("user id");
     this.props.getArticles(user_id);
   }
-
 
   render() {
     return (
@@ -49,16 +41,17 @@ class IndividualBoard extends React.Component {
           </NavLink> */}
         </div>
         <div>stuff</div>
-          <ArticleForm />
+        <ArticleForm />
         <div>
-            {this.props.articles.map(article => {
-                return (
-                    <div>
-                        <h1>{article.article_label}</h1>
-                        
-                    </div>
-                )
-            })}
+          {this.props.articles.map(article => {
+            return (
+              <div>
+                <a href={article.url} target="_blank">
+                  <h1>{article.article_label}</h1>
+                </a>
+              </div>
+            );
+          })}
         </div>
       </div>
     );

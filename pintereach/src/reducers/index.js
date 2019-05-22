@@ -116,7 +116,7 @@ export const rootReducer = (state = initialState, action) => {
       return {
           ...state, 
           fetchingArticles: false,
-          articles: [...state.articles, ...action.payload]
+          articles: action.payload
       }
       case FETCH_ARTICLES_FAIL:
       return {

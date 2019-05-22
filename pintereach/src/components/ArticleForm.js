@@ -67,15 +67,6 @@ class IndividualBoard extends React.Component {
           />
           <button>addArticle</button>
         </form>
-        <div>
-          {this.props.articles.map(article => {
-            return (
-              <div>
-                <h1>{article.article_label}</h1>
-              </div>
-            );
-          })}
-        </div>
       </div>
     );
   }
