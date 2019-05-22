@@ -34,6 +34,7 @@ const initialState = {
   user_id: localStorage.getItem('user_id')
 };
 
+
 export const rootReducer = (state = initialState, action) => {
   // console.log(action.payload)
   // console.log(action.type)

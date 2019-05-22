@@ -8,25 +8,21 @@ class IndividualBoard extends React.Component {
     articles: {
       article_label: "",
       url: "",
-      board_id: ""
+      board_id: this.props.board_id
     }
   };
 
-  componentDidMount() {
-    const user_id = localStorage.getItem("user id");
-    this.props.getArticles(user_id);
-  }
 
   addArticle = event => {
-    const user_id = localStorage.getItem("user id");
+    // const user_id = localStorage.getItem("user id");
     event.preventDefault();
     this.props.postArticle(this.state.articles);
-    this.props.getArticles(user_id);
+    // this.props.getArticles(user_id);
     this.setState({
       articles: {
         article_label: "",
         url: "",
-        board_id: ""
+        board_id: this.props.board_id
       }
     });
   };
@@ -41,6 +37,7 @@ class IndividualBoard extends React.Component {
   };
 
   render() {
+      console.log(this.props.board_id)
     return (
       <div>
         <form onSubmit={this.addArticle}>
@@ -59,6 +56,7 @@ class IndividualBoard extends React.Component {
             onChange={this.handleChanges}
           />
           <input
+          className='article-board-input'
             required
             placeholder="Board ID"
             name="board_id"

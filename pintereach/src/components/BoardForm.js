@@ -16,7 +16,7 @@ class BoardForm extends React.Component {
     event.preventDefault();
     if (!this.state.boards) return;
     this.props.postBoard(this.state.boards);
-    this.props.getBoards(user_id);
+    // this.props.getBoards(user_id);
     this.setState({
       boards: {
         board_title: "",

@@ -146,3 +146,6 @@ code {
 .board-input::placeholder {
   color: #c4c4c4;
 }
+.article-board-input {
+  display: none;
+}

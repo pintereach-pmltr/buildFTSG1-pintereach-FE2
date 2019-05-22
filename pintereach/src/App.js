@@ -14,7 +14,7 @@ function App() {
         <Route exact path="/" component={LoginPage} />
         <Route path='/register' component={RegisterPage} />
         <PrivateRoute exact path='/dashboard' component={Dashboard} />
-        <PrivateRoute path={`/dashboard/:id`} component={IndividualBoard} />
+        <Route path={`/dashboard/:id`} render={(props) => <IndividualBoard {...props}/>} />
       </div>
     </Router>
   );
