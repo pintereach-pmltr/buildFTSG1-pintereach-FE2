@@ -77,7 +77,7 @@ export const rootReducer = (state = initialState, action) => {
       return {
           ...state,
           fetchingBoards: false,
-          boards: [...action.payload]
+          boards: action.payload
       }
       case FETCH_BOARDS_FAIL:
       return {

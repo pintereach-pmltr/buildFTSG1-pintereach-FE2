@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { postBoard, getBoards } from "../actions";
 
-class ArticleForm extends React.Component {
+class BoardForm extends React.Component {
   state = {
     boards: {
       id: "",
@@ -37,15 +37,15 @@ class ArticleForm extends React.Component {
   render() {
     return (
       <div className="form-container">
-        <form className="friend-form" onSubmit={this.addBoard}>
+        <form className="board-form" onSubmit={this.addBoard}>
           <input
+          className='board-input'
             required
-            placeholder="Board Title"
+            placeholder="Type new board title and hit enter to add"
             name="board_title"
             value={this.state.boards.board_title}
             onChange={this.handleChanges}
           />
-          <button>Add Board</button>
         </form>
       </div>
     );
@@ -59,4 +59,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { postBoard, getBoards }
-)(ArticleForm);
+)(BoardForm);

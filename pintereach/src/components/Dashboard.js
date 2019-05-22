@@ -2,23 +2,21 @@ import React from "react";
 import { NavLink, Redirect, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout, getBoards } from "../actions";
-import ArticleForm from "./ArticleForm";
+import BoardForm from "./BoardForm";
 
 class Dashboard extends React.Component {
-
-
   componentDidMount() {
-      const user_id = localStorage.getItem('user id')
+    const user_id = localStorage.getItem("user id");
     this.props.getBoards(user_id);
     // console.log(id);
   }
-//   componentWillReceiveProps(nextProps) {
-//     if (this.state.boards !== nextProps.boards) {
-//       this.setState({
-//         boards: nextProps.boards
-//       });
-//     }
-//   }
+  //   componentWillReceiveProps(nextProps) {
+  //     if (this.state.boards !== nextProps.boards) {
+  //       this.setState({
+  //         boards: nextProps.boards
+  //       });
+  //     }
+  //   }
 
   logout = event => {
     event.preventDefault();
@@ -36,6 +34,7 @@ class Dashboard extends React.Component {
               <h1>Pintereach</h1>
             </div>
           </div>
+
           <div>
             <NavLink onClick={this.logout} className="nav-link" exact to="/">
               Log Out
@@ -45,8 +44,12 @@ class Dashboard extends React.Component {
             </NavLink>
           </div>
         </div>
+        <div className='form-container'>
+          <BoardForm />
+        </div>
+
         <div>
-          {/* {this.props.fetchingBoards ? <h1>Loading boards...</h1> : null } */}
+          {this.props.fetchingBoards ? <h1>Loading boards...</h1> : null}
           {this.props.boards.map(board => {
             return (
               <Link to={`/dashboard/${board.id}`} key={board.board_id}>
@@ -57,20 +60,19 @@ class Dashboard extends React.Component {
             );
           })}
         </div>
-        <ArticleForm />
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-    // ...state,
+  // ...state,
   isLoggingOut: state.isLoggingOut,
   boards: state.boards,
   fetchingBoards: state.fetchingBoards
 });
 
-console.log()
+console.log();
 
 export default connect(
   mapStateToProps,
