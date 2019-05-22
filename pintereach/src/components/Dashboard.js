@@ -22,7 +22,7 @@ class Dashboard extends React.Component {
     this.props.logout();
   };
 
-  deleteBoard = (e, id) => {
+  deleteBoard = id => {
       this.props.deleteBoard(id)
       console.log(id)
   }

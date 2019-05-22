@@ -49,6 +49,7 @@ export const LOGGING_OUT = 'LOGGING_OUT'
 export const logout = () => dispatch => {
     dispatch({ type: LOGGING_OUT })
     localStorage.removeItem('token');
+    localStorage.removeItem('user id')
 }
 
 export const FETCH_BOARDS_START = 'FETCH_BOARDS_START'

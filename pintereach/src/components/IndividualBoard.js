@@ -23,7 +23,7 @@ class IndividualBoard extends React.Component {
     let pathArray = pathname.replace(/\D/g, "");
     console.log(pathArray);
     return (
-      <div>
+      <div className='ind-board-container'>
         <div className="navbar">
           <div className="logo-box">
             {" "}
@@ -51,13 +51,14 @@ class IndividualBoard extends React.Component {
           </NavLink> */}
           <ArticleForm board_id={pathArray} />
         </div>
-        <div>
+        <div className='link-container'>
           {this.props.articles.map(article => {
               console.log(article.url)
             return (
-              <div key={article.id}>
-                <a href={article.url} target="_blank">
-                  <h1>{article.article_label}</h1>
+              <div className='ind-article' key={article.id}>
+                <a className='ind-link' href={article.url} target="_blank">
+                <i class="fas fa-newspaper" id='article-icon'></i>
+                  <h1 className='article-title'>{article.article_label}</h1>
                 </a>
               </div>
             );
