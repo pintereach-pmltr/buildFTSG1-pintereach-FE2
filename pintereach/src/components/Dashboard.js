@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { logout, getBoards } from "../actions";
+import { logout, getBoards, deleteBoard } from "../actions";
 import BoardForm from "./BoardForm";
 
 class Dashboard extends React.Component {
@@ -18,14 +18,18 @@ class Dashboard extends React.Component {
   //     }
   //   }
 
-  logout = event => {
-    event.preventDefault();
+  logout = () => {
     this.props.logout();
   };
 
+  deleteBoard = (e, id) => {
+      this.props.deleteBoard(id)
+      console.log(id)
+  }
+
   render() {
     return (
-      <div>
+      <div className='dashboard-container'>
         <div className="navbar">
           <div className="logo-box">
             {" "}
@@ -46,17 +50,20 @@ class Dashboard extends React.Component {
         </div>
         <div className='form-container'>
           <BoardForm />
+         
         </div>
+        {this.props.fetchingBoards ? <h1>Loading boards...</h1> : null}
+        <div className='board-container' >
 
-        <div>
-          {this.props.fetchingBoards ? <h1>Loading boards...</h1> : null}
           {this.props.boards.map(board => {
             return (
-              <Link to={`/dashboard/${board.id}`} key={board.id}>
+              <Link className='ind-board' to={`/dashboard/${board.id}`} key={board.id}>
                 <div>
                   <h1>{board.board_title}</h1>
+                  <button onClick={() => this.deleteBoard(board.id)}>Delete Board</button>
                 </div>
               </Link>
+              
             );
           })}
         </div>
@@ -69,12 +76,13 @@ const mapStateToProps = state => ({
   // ...state,
   isLoggingOut: state.isLoggingOut,
   boards: state.boards,
-  fetchingBoards: state.fetchingBoards
+  fetchingBoards: state.fetchingBoards,
+  deletingBoard: state.deletingBoard
 });
 
 console.log();
 
 export default connect(
   mapStateToProps,
-  { logout, getBoards }
+  { logout, getBoards, deleteBoard }
 )(Dashboard);

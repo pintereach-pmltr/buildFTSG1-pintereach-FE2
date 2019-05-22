@@ -46,7 +46,7 @@ class BoardForm extends React.Component {
             value={this.state.boards.board_title}
             onChange={this.handleChanges}
           />
-          <button class='form-button'>Add Board</button>
+          <button className='form-button'>Add Board</button>
         </form>
       </div>
     );

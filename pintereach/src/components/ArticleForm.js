@@ -46,7 +46,7 @@ class IndividualBoard extends React.Component {
           <input
           className='article-shown-input'
             required
-            placeholder="Article Title"
+            placeholder="Enter new article title"
             name="article_label"
             value={this.state.articles.article_label}
             onChange={this.handleChanges}
@@ -54,7 +54,7 @@ class IndividualBoard extends React.Component {
           <input
           className='article-shown-input'
             required
-            placeholder="Article URL"
+            placeholder="Enter article URL"
             name="url"
             value={this.state.articles.url}
             onChange={this.handleChanges}
@@ -67,7 +67,7 @@ class IndividualBoard extends React.Component {
             value={this.state.articles.board_id}
             onChange={this.handleChanges}
           />
-                    <button class='form-button'>Add Board</button>
+                    <button className='form-button'>Add Board</button>
         </form>
       </div>
     );

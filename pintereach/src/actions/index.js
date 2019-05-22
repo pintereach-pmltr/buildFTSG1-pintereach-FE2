@@ -35,6 +35,7 @@ export const register = creds => dispatch => {
         console.log(res)
         localStorage.setItem('token', res.data.token)
         localStorage.setItem('user id', res.data.id)
+        console.log(res.data.id)
         dispatch({ type: LOGIN_SUCCESS, payload: res.data.token })
     })
     .catch(err => {
@@ -122,5 +123,23 @@ export const postArticle = article => dispatch => {
     .catch(err => {
         console.log(err)
         dispatch({ type: POST_ARTICLES_FAIL })
+    })
+}
+
+export const DELETE_BOARD_START = 'DELETE_BOARD_START'
+export const DELETE_BOARD_SUCCESS = 'DELETE_BOARD_SUCCESS'
+export const DELETE_BOARD_FAIL = 'DELETE_BOARD_FAIL'
+
+export const deleteBoard = id => dispatch => {
+    dispatch({ type: DELETE_BOARD_START })
+    axiosWithAuth()
+    .delete(`https://pintereach0.herokuapp.com/api/boards/${id}`)
+    .then(res => {
+        console.log(res)
+        dispatch({ type: DELETE_BOARD_SUCCESS, payload: res.data })
+    })
+    .catch(err => {
+        console.log(err)
+        dispatch({ type: DELETE_BOARD_FAIL })
     })
 }

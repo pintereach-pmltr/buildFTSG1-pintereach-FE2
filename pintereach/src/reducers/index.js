@@ -17,7 +17,10 @@ import {
   FETCH_ARTICLES_FAIL,
   POST_ARTICLES_START,
   POST_ARTICLES_SUCCESS,
-  POST_ARTICLES_FAIL
+  POST_ARTICLES_FAIL,
+  DELETE_BOARD_START,
+  DELETE_BOARD_SUCCESS,
+  DELETE_BOARD_FAIL
 } from "../actions";
 
 const initialState = {
@@ -31,7 +34,8 @@ const initialState = {
   isRegistering: false,
   isLoggingOutl: false,
   postingBoards: false,
-  user_id: localStorage.getItem('user_id')
+  user_id: localStorage.getItem('user_id'),
+  deletingBoard: false
 };
 
 
@@ -136,6 +140,22 @@ export const rootReducer = (state = initialState, action) => {
           articles: [...state.articles, {...action.payload}]
       }
       case POST_ARTICLES_FAIL:
+      return {
+          ...state,
+          error: action.payload
+      }
+      case DELETE_BOARD_START:
+      return {
+          ...state,
+          deletingBoard: true
+      }
+      case DELETE_BOARD_SUCCESS:
+      return {
+          ...state,
+          deletingBoard: false,
+          boards: [...state.articles, {...action.payload}]
+      }
+      case DELETE_BOARD_FAIL:
       return {
           ...state,
           error: action.payload
