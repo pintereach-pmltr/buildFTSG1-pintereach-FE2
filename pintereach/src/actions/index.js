@@ -89,3 +89,38 @@ export const postBoard = (board) => dispatch => {
         dispatch({ type: POST_BOARDS_FAIL })
     })
 }
+
+export const FETCH_ARTICLES_START = 'FETCH_ARTICLES_START'
+export const FETCH_ARTICLES_SUCCESS = 'FETCH_ARTICLES_SUCCESS'
+export const FETCH_ARTICLES_FAIL = 'FETCH_ARTICLES_FAIL'
+
+export const getArticles = id => dispatch => {
+    dispatch({ type: FETCH_ARTICLES_START })
+    axiosWithAuth()
+    .get(`https://pintereach0.herokuapp.com/api/articles/${id}`)
+    .then(res => {
+        console.log(res)
+        dispatch({ type: FETCH_ARTICLES_SUCCESS, payload: res.data })
+    })
+    .catch(err => {
+        console.log(err)
+    })
+}
+
+export const POST_ARTICLES_START = 'POST_ARTICLES_START'
+export const POST_ARTICLES_SUCCESS = 'POST_ARTICLES_SUCCESS'
+export const POST_ARTICLES_FAIL = 'POST_ARTICLES_FAIL'
+
+export const postArticle = article => dispatch => {
+    dispatch({ type: POST_ARTICLES_START })
+    axiosWithAuth()
+    .post(`https://pintereach0.herokuapp.com/api/articles/`, article)
+    .then(res => {
+        console.log(res)
+        dispatch({ type: POST_ARTICLES_SUCCESS, payload: res.data })
+    })
+    .catch(err => {
+        console.log(err)
+        dispatch({ type: POST_ARTICLES_FAIL })
+    })
+}

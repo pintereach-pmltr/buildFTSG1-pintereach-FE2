@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Redirect, Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout, getBoards } from "../actions";
 import BoardForm from "./BoardForm";
@@ -52,7 +52,7 @@ class Dashboard extends React.Component {
           {this.props.fetchingBoards ? <h1>Loading boards...</h1> : null}
           {this.props.boards.map(board => {
             return (
-              <Link to={`/dashboard/${board.id}`} key={board.board_id}>
+              <Link to={`/dashboard/${board.id}`} key={board.id}>
                 <div>
                   <h1>{board.board_title}</h1>
                 </div>

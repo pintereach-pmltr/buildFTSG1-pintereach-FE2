@@ -39,7 +39,7 @@ code {
 .logo {
   color: white;
   font-size: 0.7rem;
-  font-family: 'Baloo Bhai', cursive;
+  font-family: 'Ubuntu', sans-serif;
   margin-left: 0.4rem;
 }
 .login-form {
@@ -125,14 +125,15 @@ code {
 .form-container {
   width: 100%;
   /* border: 1px solid red; */
-  height: 3rem;
+  height: 4.2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: #f8f8f8;
 }
 .board-input {
-  height: 2rem;
+  height: 4rem;
   border: none;
   outline: none;
   width: 400px;
@@ -140,6 +141,7 @@ code {
   display: flex;
   justify-content: center;
   text-align: center;
+  background: #f8f8f8;
 }
 .board-input::placeholder {
   color: #c4c4c4;

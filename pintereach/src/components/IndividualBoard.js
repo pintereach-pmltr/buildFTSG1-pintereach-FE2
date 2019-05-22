@@ -1,8 +1,24 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { getArticles, getBoards, postArticle } from "../actions";
+import ArticleForm from "./ArticleForm";
 
 class IndividualBoard extends React.Component {
-  state = {};
+  state = {
+    articles: {
+      article_label: "",
+      url: "",
+      board_id: ''
+    }
+  };
+
+  componentDidMount() {
+    const user_id = localStorage.getItem('user id')
+    this.props.getArticles(user_id);
+  }
+
+
   render() {
     return (
       <div>
@@ -16,7 +32,7 @@ class IndividualBoard extends React.Component {
           </div>
         </div>
         <div className="sub-nav-bar">
-          <NavLink className="sub-link" to="/dashboard/all">
+          {/* <NavLink className="sub-link" to="/dashboard/all">
             ALL
           </NavLink>
           <NavLink className="sub-link" to="/dashboard/tech">
@@ -30,11 +46,33 @@ class IndividualBoard extends React.Component {
           </NavLink>
           <NavLink className="sub-link" to="/dashboard/entertainment">
             ENTERTAINMENT
-          </NavLink>
+          </NavLink> */}
+        </div>
+        <div>stuff</div>
+          <ArticleForm />
+        <div>
+            {this.props.articles.map(article => {
+                return (
+                    <div>
+                        <h1>{article.article_label}</h1>
+                        
+                    </div>
+                )
+            })}
         </div>
       </div>
     );
   }
 }
 
-export default IndividualBoard;
+const mapStateToProps = state => ({
+  // ...state,
+  // isLoggingOut: state.isLoggingOut,
+  articles: state.articles,
+  fetchingArticles: state.fetchingArticles
+});
+
+export default connect(
+  mapStateToProps,
+  { getArticles, getBoards, postArticle }
+)(IndividualBoard);
