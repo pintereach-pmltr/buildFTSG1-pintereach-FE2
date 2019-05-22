@@ -7,9 +7,10 @@ import ArticleForm from "./ArticleForm";
 class Dashboard extends React.Component {
 
 
-  componentDidMount(id) {
-    this.props.getBoards((5));
-    console.log(id);
+  componentDidMount() {
+      const user_id = localStorage.getItem('user id')
+    this.props.getBoards(user_id);
+    // console.log(id);
   }
 //   componentWillReceiveProps(nextProps) {
 //     if (this.state.boards !== nextProps.boards) {
@@ -48,7 +49,7 @@ class Dashboard extends React.Component {
           {/* {this.props.fetchingBoards ? <h1>Loading boards...</h1> : null } */}
           {this.props.boards.map(board => {
             return (
-              <Link to={`/dashboard/${board.id}`} key={board.id}>
+              <Link to={`/dashboard/${board.id}`} key={board.board_id}>
                 <div>
                   <h1>{board.board_title}</h1>
                 </div>
@@ -63,10 +64,13 @@ class Dashboard extends React.Component {
 }
 
 const mapStateToProps = state => ({
+    // ...state,
   isLoggingOut: state.isLoggingOut,
   boards: state.boards,
   fetchingBoards: state.fetchingBoards
 });
+
+console.log()
 
 export default connect(
   mapStateToProps,

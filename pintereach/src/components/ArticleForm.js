@@ -7,19 +7,20 @@ class ArticleForm extends React.Component {
     boards: {
       id: "",
       board_title: "",
-      user_id: 1
+      user_id: localStorage.getItem('user id')
     }
   };
 
   addBoard = event => {
+    const user_id = localStorage.getItem('user id')
     event.preventDefault();
     if (!this.state.boards) return;
     this.props.postBoard(this.state.boards);
-    this.props.getBoards(5);
+    this.props.getBoards(user_id);
     this.setState({
       boards: {
         board_title: "",
-        user_id: 1
+        user_id: user_id
       }
     });
   };
@@ -44,7 +45,7 @@ class ArticleForm extends React.Component {
             value={this.state.boards.board_title}
             onChange={this.handleChanges}
           />
-          <button>Add Article</button>
+          <button>Add Board</button>
         </form>
       </div>
     );
