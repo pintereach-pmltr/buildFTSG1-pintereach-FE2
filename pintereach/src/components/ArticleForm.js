@@ -8,6 +8,7 @@ class IndividualBoard extends React.Component {
     articles: {
       article_label: "",
       url: "",
+      //set board_id to extracted location number (from individualboard component)
       board_id: this.props.board_id
     }
   };
@@ -22,6 +23,7 @@ class IndividualBoard extends React.Component {
       articles: {
         article_label: "",
         url: "",
+        //set board_id to extracted location number (from individualboard component)
         board_id: this.props.board_id
       }
     });
@@ -39,9 +41,10 @@ class IndividualBoard extends React.Component {
   render() {
       console.log(this.props.board_id)
     return (
-      <div>
-        <form onSubmit={this.addArticle}>
+      <div className='article-form-container'>
+        <form onSubmit={this.addArticle} className='article-form'>
           <input
+          className='article-shown-input'
             required
             placeholder="Article Title"
             name="article_label"
@@ -49,6 +52,7 @@ class IndividualBoard extends React.Component {
             onChange={this.handleChanges}
           />
           <input
+          className='article-shown-input'
             required
             placeholder="Article URL"
             name="url"
@@ -63,7 +67,7 @@ class IndividualBoard extends React.Component {
             value={this.state.articles.board_id}
             onChange={this.handleChanges}
           />
-          <button>addArticle</button>
+                    <button class='form-button'>Add Board</button>
         </form>
       </div>
     );

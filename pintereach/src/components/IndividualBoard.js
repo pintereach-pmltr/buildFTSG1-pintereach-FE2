@@ -13,6 +13,10 @@ class IndividualBoard extends React.Component {
   }
 
   render() {
+      //fetch location prop from router
+      //set location to pathname variable
+      //extract all non-digit characters
+      //past down to articleform
     console.log(this.props.location);
     let pathname = this.props.location.pathname;
     console.log(pathname);
@@ -29,7 +33,7 @@ class IndividualBoard extends React.Component {
             </div>
           </div>
         </div>
-        <div className="sub-nav-bar">
+        <div className="sub-nav-bar-article">
           {/* <NavLink className="sub-link" to="/dashboard/all">
             ALL
           </NavLink>
@@ -47,10 +51,9 @@ class IndividualBoard extends React.Component {
           </NavLink> */}
           <ArticleForm board_id={pathArray} />
         </div>
-        <div>stuff</div>
-
         <div>
           {this.props.articles.map(article => {
+              console.log(article.url)
             return (
               <div key={article.id}>
                 <a href={article.url} target="_blank">

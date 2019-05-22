@@ -41,11 +41,12 @@ class BoardForm extends React.Component {
           <input
           className='board-input'
             required
-            placeholder="Type new board title and hit enter to add"
+            placeholder="Add a new board"
             name="board_title"
             value={this.state.boards.board_title}
             onChange={this.handleChanges}
           />
+          <button class='form-button'>Add Board</button>
         </form>
       </div>
     );
