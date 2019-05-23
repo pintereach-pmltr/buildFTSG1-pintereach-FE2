@@ -16,7 +16,10 @@ class IndividualBoard extends React.Component {
   }
 
   deleteArticle = id => {
+    let pathname = this.props.location.pathname;
+    let pathArray = pathname.replace(/\D/g, "");
       this.props.deleteArticle(id);
+      this.props.getArticles(pathArray)
   }
 
   render() {
@@ -75,7 +78,7 @@ class IndividualBoard extends React.Component {
                   <i class="fas fa-newspaper" id="article-icon" />
                   <h1 className="article-title">{article.article_label}</h1>
                 </a>
-                <button onClick={() => this.deleteArticle(article.id)} />
+                <button className='article-delete' onClick={() => this.deleteArticle(article.id)}>Delete</button>
               </div>
             );
           })}

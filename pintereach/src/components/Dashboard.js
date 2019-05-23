@@ -10,21 +10,16 @@ class Dashboard extends React.Component {
     this.props.getBoards(user_id);
     // console.log(id);
   }
-  //   componentWillReceiveProps(nextProps) {
-  //     if (this.state.boards !== nextProps.boards) {
-  //       this.setState({
-  //         boards: nextProps.boards
-  //       });
-  //     }
-  //   }
 
   logout = () => {
     this.props.logout();
   };
 
   deleteBoard = (id) => {
+    const user_id = localStorage.getItem("user id");
     this.props.deleteBoard(id)
-    
+    // debugger;
+    this.props.getBoards(user_id);
     console.log(id);
   };
 
@@ -52,11 +47,11 @@ class Dashboard extends React.Component {
         <div className="form-container">
           <BoardForm />
         </div>
-        {this.props.fetchingBoards ? <h1>Loading boards...</h1> : null}
+        {/* {this.props.fetchingBoards ? <h1>Loading boards...</h1> : null} */}
         <div className="board-container">
           {this.props.boards.map(board => {
             return (
-              <div className='ind-board'>
+                <div className='ind-board'>
                 <Link
                   className="ind-board"
                   to={`/dashboard/${board.id}`}
@@ -64,17 +59,14 @@ class Dashboard extends React.Component {
                 >
                     <h1>{board.board_title}</h1>
 
-                  <div >
-                  <Link
+                </Link>
+                <button
                   to="/dashboard"
                   onClick={() => this.deleteBoard(board.id)}
                 >
                   Delete Board
-                </Link>
+                </button>
                 </div>
-                </Link>
-
-              </div>
             );
           })}
         </div>
