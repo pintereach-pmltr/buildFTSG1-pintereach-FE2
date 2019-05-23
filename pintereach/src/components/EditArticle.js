@@ -1,32 +1,23 @@
 import React from "react";
 // import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { getArticles, getBoards, postArticle } from "../actions";
+import { getArticles, getBoards, postArticle, editArticle } from "../actions";
+import Loader from "react-loader-spinner";
 
-class IndividualBoard extends React.Component {
+class EditArticle extends React.Component {
   state = {
-    articles: {
-      article_label: "",
-      url: "",
-      //set board_id to extracted location number (from individualboard component)
-      board_id: this.props.board_id
-    }
+    articles: this.props.article
+    // article: this.props.article
+    //this.props.article
+    //   article_label: "",
+    //   url: "",
+    //set board_id to extracted location number (from individualboard component)
+    //   board_id: this.props.board_id
   };
 
-
-  addArticle = event => {
-    // const user_id = localStorage.getItem("user id");
-    event.preventDefault();
-    this.props.postArticle(this.state.articles);
+  editArticle = event => {
+    this.props.editArticle(event, this.state.articles);
     // this.props.getArticles(user_id);
-    this.setState({
-      articles: {
-        article_label: "",
-        url: "",
-        //set board_id to extracted location number (from individualboard component)
-        board_id: this.props.board_id
-      }
-    });
   };
 
   handleChanges = event => {
@@ -39,22 +30,21 @@ class IndividualBoard extends React.Component {
   };
 
   render() {
-      console.log(this.props.board_id)
+    console.log(this.props.board_id);
     return (
-      <div className='article-form-container'>
-        <form onSubmit={this.addArticle} className='article-form'>
+      <div className="article-form-container">
+        <form onSubmit={this.editArticle} className="article-form">
           <input
-          className='article-shown-input-1'
+            className="article-shown-input-1"
             required
             placeholder="Enter new article title"
             name="article_label"
             value={this.state.articles.article_label}
             onChange={this.handleChanges}
           />
-          <div className='divide'>
-          </div>
+          <div className="divide" />
           <input
-          className='article-shown-input'
+            className="article-shown-input"
             required
             placeholder="URL ex: www.google.com"
             name="url"
@@ -62,14 +52,26 @@ class IndividualBoard extends React.Component {
             onChange={this.handleChanges}
           />
           <input
-          className='article-board-input'
+            className="article-board-input"
             required
             placeholder="Board ID"
             name="board_id"
             value={this.state.articles.board_id}
             onChange={this.handleChanges}
           />
-                    <button className='form-button'>Add Board</button>
+          <button className="article-edit">
+            {this.props.editingArticle ? (
+              <Loader
+                className="loader"
+                type="ThreeDots"
+                color="#2b2d42"
+                height={20}
+                width={20}
+              />
+            ) : (
+              "Save Changes"
+            )}
+          </button>
         </form>
       </div>
     );
@@ -86,5 +88,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getArticles, getBoards, postArticle }
-)(IndividualBoard);
+  { getArticles, getBoards, postArticle, editArticle }
+)(EditArticle);

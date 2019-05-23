@@ -162,3 +162,22 @@ export const deleteArticle = id => dispatch => {
         dispatch({ type: DELETE_ARTICLE_FAIL })
     })
 }
+
+export const EDIT_ARTICLE_START = 'EDIT_ARTICLE_START'
+export const EDIT_ARTICLE_SUCCESS = 'EDIT_ARTICLE_SUCCESS'
+export const EDIT_ARTICLE_FAIL = 'EDIT_ARTICLE_FAIL'
+
+export const editArticle = article => dispatch => {
+    dispatch ({ type: EDIT_ARTICLE_START })
+    return axiosWithAuth()
+    .put(`https://pintereach0.herokuapp.com/api/articles/${article.id}`, article)
+    .then(res=> {
+        console.log(res)
+        dispatch({ type: EDIT_ARTICLE_SUCCESS, payload: res.data })
+    })
+    .catch(err => {
+        console.log(err)
+        dispatch({ type: EDIT_ARTICLE_FAIL })
+    })
+}
+
