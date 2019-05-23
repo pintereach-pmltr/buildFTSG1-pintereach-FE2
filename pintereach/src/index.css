@@ -54,6 +54,7 @@ code {
   justify-content: center;
   box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.1), 0px 2px 4px rgba(0, 0, 0, 0.1),
     2px 0px 4px rgba(0, 0, 0, 0.1), -2px 0px 4px rgba(0, 0, 0, 0.1);
+    font-family: "Ubuntu", sans-serif;
 }
 .login-form h1 {
   margin-bottom: 1.4rem;
@@ -161,7 +162,7 @@ code {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #efefef;
+  background: #f8f8f8;
   width: 100%;
 }
 .article-form {
@@ -170,18 +171,39 @@ code {
   align-items: center;
   height: 4rem;
 }
-.article-shown-input {
+.article-shown-input-1 {
   height: 2rem;
   width: 40%;
-  text-align: center;
+  /* text-align: center; */
   border: none;
   background: none;
   outline: none;
   font-size: 1rem;
   margin-top: 0.4rem;
+  /* border-right: 1px solid #c4c4c4; */
+  /* padding-left: 2rem; */
+}
+.article-shown-input {
+  height: 2rem;
+  width: 40%;
+  /* text-align: center; */
+  border: none;
+  background: none;
+  outline: none;
+  font-size: 1rem;
+  margin-top: 0.4rem;
+  /* padding-left: 2rem; */
+  /* border-right: 1px solid black; */
 }
 .article-shown-input::placeholder {
   color: #c4c4c4;
+  text-align: center;
+  padding: 0;
+}
+.article-shown-input-1::placeholder {
+  color: #c4c4c4;
+  text-align: center;
+  padding: 0;
 }
 .form-button {
   width: 200px;
@@ -202,6 +224,7 @@ code {
     2px 0px 4px rgba(0, 0, 0, 0.1), -2px 0px 4px rgba(0, 0, 0, 0.05);
   text-decoration: none;
   color: #999999;
+  font-family: "Ubuntu", sans-serif;
 }
 .board-container {
   display: flex;
@@ -253,8 +276,13 @@ code {
   margin-left: 1.2rem;
 }
 .article-title {
-  margin-left: 1.2rem;
-  font-size: 1.2rem;
+  margin: 1rem 1.2rem;
+  font-size: 1rem;
   font-weight: none;
   font-family: "Ubuntu", sans-serif;
+}
+.divide {
+  border: 1px solid #c4c4c4;
+  height: 50%;
+  margin: 0 1rem;
 }

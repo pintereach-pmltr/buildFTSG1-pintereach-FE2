@@ -67,7 +67,7 @@ class IndividualBoard extends React.Component {
             console.log(article.url);
             return (
               <div className="ind-article" key={article.id}>
-                <a className="ind-link" href={article.url} target="_blank">
+                <a className="ind-link" href={`https://${article.url}`} target="_blank">
                   <i class="fas fa-newspaper" id="article-icon" />
                   <h1 className="article-title">{article.article_label}</h1>
                 </a>

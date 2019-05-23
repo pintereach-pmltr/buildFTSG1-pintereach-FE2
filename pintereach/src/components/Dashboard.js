@@ -60,7 +60,7 @@ class Dashboard extends React.Component {
               <Link className='ind-board' to={`/dashboard/${board.id}`} key={board.id}>
                 <div>
                   <h1>{board.board_title}</h1>
-                  <button onClick={() => this.deleteBoard(board.id)}>Delete Board</button>
+                  <button to='/dashboard' onClick={() => this.deleteBoard(board.id)}>Delete Board</button>
                 </div>
               </Link>
               

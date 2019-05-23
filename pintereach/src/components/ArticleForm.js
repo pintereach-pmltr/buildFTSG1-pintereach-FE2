@@ -44,17 +44,19 @@ class IndividualBoard extends React.Component {
       <div className='article-form-container'>
         <form onSubmit={this.addArticle} className='article-form'>
           <input
-          className='article-shown-input'
+          className='article-shown-input-1'
             required
             placeholder="Enter new article title"
             name="article_label"
             value={this.state.articles.article_label}
             onChange={this.handleChanges}
           />
+          <div className='divide'>
+          </div>
           <input
           className='article-shown-input'
             required
-            placeholder="Enter article URL"
+            placeholder="URL ex: www.google.com"
             name="url"
             value={this.state.articles.url}
             onChange={this.handleChanges}
