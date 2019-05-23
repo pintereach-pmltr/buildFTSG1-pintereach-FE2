@@ -10,26 +10,22 @@ class Dashboard extends React.Component {
     this.props.getBoards(user_id);
     // console.log(id);
   }
-  //   componentWillReceiveProps(nextProps) {
-  //     if (this.state.boards !== nextProps.boards) {
-  //       this.setState({
-  //         boards: nextProps.boards
-  //       });
-  //     }
-  //   }
 
   logout = () => {
     this.props.logout();
   };
 
   deleteBoard = id => {
-      this.props.deleteBoard(id)
-      console.log(id)
-  }
+    const user_id = localStorage.getItem("user id");
+    this.props.deleteBoard(id);
+    // debugger;
+    this.props.getBoards(user_id);
+    console.log(id);
+  };
 
   render() {
     return (
-      <div className='dashboard-container'>
+      <div className="dashboard-container">
         <div className="navbar">
           <div className="logo-box">
             {" "}
@@ -48,22 +44,30 @@ class Dashboard extends React.Component {
             </NavLink>
           </div>
         </div>
-        <div className='form-container'>
+        <div className="form-container">
           <BoardForm />
-         
         </div>
-        {this.props.fetchingBoards ? <h1>Loading boards...</h1> : null}
-        <div className='board-container' >
-
+        {/* {this.props.fetchingBoards ? <h1>Loading boards...</h1> : null} */}
+        <div className="board-container">
           {this.props.boards.map(board => {
             return (
-              <Link className='ind-board' to={`/dashboard/${board.id}`} key={board.id}>
-                <div>
+              <div className="ind-board">
+                <Link
+                  className="ind-board"
+                  to={`/dashboard/${board.id}`}
+                  key={board.id}
+                >
+                  <i className="fas fa-clipboard-list" id="board-icon" />
                   <h1>{board.board_title}</h1>
-                  <button to='/dashboard' onClick={() => this.deleteBoard(board.id)}>Delete Board</button>
-                </div>
-              </Link>
-              
+                </Link>
+                <button
+                  className="board-delete"
+                  to="/dashboard"
+                  onClick={() => this.deleteBoard(board.id)}
+                >
+                  Delete Board
+                </button>
+              </div>
             );
           })}
         </div>

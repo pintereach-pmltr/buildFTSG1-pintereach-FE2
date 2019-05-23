@@ -254,6 +254,7 @@ code {
   2px 0px 4px rgba(0, 0, 0, 0.1), -2px 0px 4px rgba(0, 0, 0, 0.05);
   display: flex;
   justify-content: flex-start;
+  align-items: center;
 }
 .ind-board-container {
   display: flex;
@@ -285,4 +286,33 @@ code {
   border: 1px solid #c4c4c4;
   height: 50%;
   margin: 0 1rem;
+}
+.article-delete {
+  border: 1px solid #c4c4c4;
+  border-radius: 4px;
+  margin-right: 1rem;
+  height: 1.5rem;
+  outline: none;
+  color: #4f4f4f;
+}
+.article-delete:hover {
+  cursor: pointer;
+  color: #c4c4c4;
+  background: #efefef;
+}
+#board-icon {
+  font-size: 2rem;
+  margin-top: 1.4rem;
+}
+.board-delete {
+  border: 1px solid #c4c4c4;
+  border-radius: 4px;
+  height: 1.5rem;
+  outline: none;
+  color: #4f4f4f;
+}
+.board-delete:hover {
+  cursor: pointer;
+  color: #c4c4c4;
+  background: #efefef;
 }
