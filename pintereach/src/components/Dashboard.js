@@ -15,9 +15,9 @@ class Dashboard extends React.Component {
     this.props.logout();
   };
 
-  deleteBoard = (id) => {
+  deleteBoard = id => {
     const user_id = localStorage.getItem("user id");
-    this.props.deleteBoard(id)
+    this.props.deleteBoard(id);
     // debugger;
     this.props.getBoards(user_id);
     console.log(id);
@@ -51,22 +51,23 @@ class Dashboard extends React.Component {
         <div className="board-container">
           {this.props.boards.map(board => {
             return (
-                <div className='ind-board'>
+              <div className="ind-board">
                 <Link
                   className="ind-board"
                   to={`/dashboard/${board.id}`}
                   key={board.id}
                 >
-                    <h1>{board.board_title}</h1>
-
+                  <i className="fas fa-clipboard-list" id="board-icon" />
+                  <h1>{board.board_title}</h1>
                 </Link>
                 <button
+                  className="board-delete"
                   to="/dashboard"
                   onClick={() => this.deleteBoard(board.id)}
                 >
                   Delete Board
                 </button>
-                </div>
+              </div>
             );
           })}
         </div>

@@ -300,3 +300,19 @@ code {
   color: #c4c4c4;
   background: #efefef;
 }
+#board-icon {
+  font-size: 2rem;
+  margin-top: 1.4rem;
+}
+.board-delete {
+  border: 1px solid #c4c4c4;
+  border-radius: 4px;
+  height: 1.5rem;
+  outline: none;
+  color: #4f4f4f;
+}
+.board-delete:hover {
+  cursor: pointer;
+  color: #c4c4c4;
+  background: #efefef;
+}
