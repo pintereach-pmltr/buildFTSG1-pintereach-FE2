@@ -169,9 +169,10 @@ export const EDIT_ARTICLE_FAIL = 'EDIT_ARTICLE_FAIL'
 
 export const editArticle = article => dispatch => {
     dispatch ({ type: EDIT_ARTICLE_START })
-    return axiosWithAuth()
+    axiosWithAuth()
     .put(`https://pintereach0.herokuapp.com/api/articles/${article.id}`, article)
     .then(res=> {
+        debugger;
         console.log(res)
         dispatch({ type: EDIT_ARTICLE_SUCCESS, payload: res.data })
     })

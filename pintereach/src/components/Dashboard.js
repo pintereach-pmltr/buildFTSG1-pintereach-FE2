@@ -54,7 +54,7 @@ class Dashboard extends React.Component {
         <div className="board-container">
           {this.props.boards.map(board => {
             return (
-              <div className="ind-board">
+              <div className="ind-board" key={board.id}>
                 <Link
                   className="ind-board"
                   to={`/dashboard/${board.id}`}

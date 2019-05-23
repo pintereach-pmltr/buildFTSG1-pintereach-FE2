@@ -6,10 +6,10 @@ import {
   getBoards,
   postArticle,
   logout,
-  deleteArticle
+  deleteArticle,
+  editArticle
 } from "../actions";
 import ArticleForm from "./ArticleForm";
-import editArticle from "./EditArticle";
 import EditArticle from "./EditArticle";
 
 class IndividualBoard extends React.Component {
@@ -92,16 +92,21 @@ class IndividualBoard extends React.Component {
           {this.props.articles.map(article => {
             if (this.state.editingArticleID === article.id) {
               return (
-                <EditArticle article={article} editArticle={this.editArticle} />
+                <EditArticle
+                  key={article.id}
+                  article={article}
+                  editArticle={this.editArticle}
+                />
               );
             }
-            console.log(article.url);
+            console.log(article.id);
             return (
               <div className="ind-article" key={article.id}>
                 <a
                   className="ind-link"
                   href={`https://${article.url}`}
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <i className="fas fa-newspaper" id="article-icon" />
                   <h1 className="article-title">{article.article_label}</h1>

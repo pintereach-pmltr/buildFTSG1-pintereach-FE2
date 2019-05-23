@@ -1,7 +1,7 @@
 import React from "react";
 // import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { getArticles, getBoards, postArticle, editArticle } from "../actions";
+import { getArticles, getBoards, postArticle } from "../actions";
 import Loader from "react-loader-spinner";
 
 class EditArticle extends React.Component {
@@ -15,12 +15,8 @@ class EditArticle extends React.Component {
     //   board_id: this.props.board_id
   };
 
-  editArticle = event => {
-    this.props.editArticle(event, this.state.articles);
-    // this.props.getArticles(user_id);
-  };
-
   handleChanges = event => {
+    console.log(this.state.articles)
     this.setState({
       articles: {
         ...this.state.articles,
@@ -30,10 +26,9 @@ class EditArticle extends React.Component {
   };
 
   render() {
-    console.log(this.props.board_id);
     return (
       <div className="article-form-container">
-        <form onSubmit={this.editArticle} className="article-form">
+        <form className="article-form">
           <input
             className="article-shown-input-1"
             required
@@ -59,12 +54,12 @@ class EditArticle extends React.Component {
             value={this.state.articles.board_id}
             onChange={this.handleChanges}
           />
-          <button className="article-edit">
+          <button className="article-edit" onClick={() => this.editArticle(this.props.article)}>
             {this.props.editingArticle ? (
               <Loader
                 className="loader"
                 type="ThreeDots"
-                color="#2b2d42"
+                color="#ffffff"
                 height={20}
                 width={20}
               />
@@ -88,5 +83,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getArticles, getBoards, postArticle, editArticle }
+  { getArticles, getBoards, postArticle }
 )(EditArticle);

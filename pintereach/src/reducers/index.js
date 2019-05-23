@@ -194,7 +194,12 @@ export const rootReducer = (state = initialState, action) => {
           ...state,
           editingArticle: false,
           error: '',
-          articles: action.payload
+          articles: [state.articles, {...action.payload}]
+      }
+      case EDIT_ARTICLE_FAIL:
+      return {
+          ...state,
+          error: action.payload
       }
     default:
       return state;
