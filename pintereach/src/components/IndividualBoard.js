@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import { getArticles, getBoards, postArticle, logout } from "../actions";
+import { getArticles, getBoards, postArticle, logout, deleteArticle } from "../actions";
 import ArticleForm from "./ArticleForm";
 
 class IndividualBoard extends React.Component {
@@ -13,6 +13,10 @@ class IndividualBoard extends React.Component {
   }
   logout = () => {
       this.props.logout();
+  }
+
+  deleteArticle = id => {
+      this.props.deleteArticle(id);
   }
 
   render() {
@@ -71,6 +75,7 @@ class IndividualBoard extends React.Component {
                   <i class="fas fa-newspaper" id="article-icon" />
                   <h1 className="article-title">{article.article_label}</h1>
                 </a>
+                <button onClick={() => this.deleteArticle(article.id)} />
               </div>
             );
           })}
@@ -89,5 +94,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getArticles, getBoards, postArticle, logout }
+  { getArticles, getBoards, postArticle, logout, deleteArticle }
 )(IndividualBoard);

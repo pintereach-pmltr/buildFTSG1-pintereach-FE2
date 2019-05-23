@@ -22,14 +22,15 @@ class Dashboard extends React.Component {
     this.props.logout();
   };
 
-  deleteBoard = id => {
-      this.props.deleteBoard(id)
-      console.log(id)
-  }
+  deleteBoard = (id) => {
+    this.props.deleteBoard(id)
+    
+    console.log(id);
+  };
 
   render() {
     return (
-      <div className='dashboard-container'>
+      <div className="dashboard-container">
         <div className="navbar">
           <div className="logo-box">
             {" "}
@@ -48,22 +49,32 @@ class Dashboard extends React.Component {
             </NavLink>
           </div>
         </div>
-        <div className='form-container'>
+        <div className="form-container">
           <BoardForm />
-         
         </div>
         {this.props.fetchingBoards ? <h1>Loading boards...</h1> : null}
-        <div className='board-container' >
-
+        <div className="board-container">
           {this.props.boards.map(board => {
             return (
-              <Link className='ind-board' to={`/dashboard/${board.id}`} key={board.id}>
-                <div>
-                  <h1>{board.board_title}</h1>
-                  <button to='/dashboard' onClick={() => this.deleteBoard(board.id)}>Delete Board</button>
+              <div className='ind-board'>
+                <Link
+                  className="ind-board"
+                  to={`/dashboard/${board.id}`}
+                  key={board.id}
+                >
+                    <h1>{board.board_title}</h1>
+
+                  <div >
+                  <Link
+                  to="/dashboard"
+                  onClick={() => this.deleteBoard(board.id)}
+                >
+                  Delete Board
+                </Link>
                 </div>
-              </Link>
-              
+                </Link>
+
+              </div>
             );
           })}
         </div>
