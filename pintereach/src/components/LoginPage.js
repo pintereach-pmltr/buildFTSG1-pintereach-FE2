@@ -23,7 +23,7 @@ class LoginPage extends React.Component {
   login = event => {
     event.preventDefault();
     this.props.login(this.state.credentials).then(() => {
-        this.props.history.push('/dashboard/all')
+        this.props.history.push('/dashboard')
     })
   };
 
@@ -46,7 +46,7 @@ class LoginPage extends React.Component {
             <NavLink className="nav-link" to="/register">
               Register
             </NavLink>
-            <NavLink className="nav-link" to="/dashboard/all">
+            <NavLink className="nav-link" to="/dashboard">
               Dashboard
             </NavLink>
           </div>

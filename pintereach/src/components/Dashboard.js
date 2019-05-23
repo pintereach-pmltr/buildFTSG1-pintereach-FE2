@@ -1,41 +1,88 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { logout, getBoards, deleteBoard } from "../actions";
+import BoardForm from "./BoardForm";
 
 class Dashboard extends React.Component {
-  state = {};
+  componentDidMount() {
+    const user_id = localStorage.getItem("user id");
+    this.props.getBoards(user_id);
+    // console.log(id);
+  }
+  //   componentWillReceiveProps(nextProps) {
+  //     if (this.state.boards !== nextProps.boards) {
+  //       this.setState({
+  //         boards: nextProps.boards
+  //       });
+  //     }
+  //   }
+
+  logout = () => {
+    this.props.logout();
+  };
+
+  deleteBoard = id => {
+      this.props.deleteBoard(id)
+      console.log(id)
+  }
+
   render() {
     return (
-      <div>
+      <div className='dashboard-container'>
         <div className="navbar">
-        <div className='logo-box'>
+          <div className="logo-box">
             {" "}
-            <i className="fas fa-bookmark"></i>
+            <i className="fas fa-bookmark" />
             <div className="logo">
               <h1>Pintereach</h1>
             </div>
           </div>
+
           <div>
-            <NavLink className="nav-link" exact to="/">
-              Login
+            <NavLink onClick={this.logout} className="nav-link" exact to="/">
+              Log Out
             </NavLink>
-            <NavLink className="nav-link" to="/register">
-              Register
-            </NavLink>
-            <NavLink className="nav-link" to="/dashboard/all">
+            <NavLink className="nav-link" to="/dashboard">
               Dashboard
             </NavLink>
           </div>
         </div>
-        <div className="sub-nav-bar">
-          <NavLink className='sub-link' to="/dashboard/all">ALL</NavLink>
-          <NavLink className='sub-link' to="/dashboard/tech">TECH</NavLink>
-          <NavLink className='sub-link' to="/dashboard/science">SCIENCE</NavLink>
-          <NavLink className='sub-link' to="/dashboard/sports">SPORTS</NavLink>
-          <NavLink className='sub-link' to="/dashboard/entertainment">ENTERTAINMENT</NavLink>
+        <div className='form-container'>
+          <BoardForm />
+         
+        </div>
+        {this.props.fetchingBoards ? <h1>Loading boards...</h1> : null}
+        <div className='board-container' >
+
+          {this.props.boards.map(board => {
+            return (
+              <Link className='ind-board' to={`/dashboard/${board.id}`} key={board.id}>
+                <div>
+                  <h1>{board.board_title}</h1>
+                  <button to='/dashboard' onClick={() => this.deleteBoard(board.id)}>Delete Board</button>
+                </div>
+              </Link>
+              
+            );
+          })}
         </div>
       </div>
     );
   }
 }
 
-export default Dashboard;
+const mapStateToProps = state => ({
+  // ...state,
+  isLoggingOut: state.isLoggingOut,
+  boards: state.boards,
+  fetchingBoards: state.fetchingBoards,
+  deletingBoard: state.deletingBoard
+});
+
+console.log();
+
+export default connect(
+  mapStateToProps,
+  { logout, getBoards, deleteBoard }
+)(Dashboard);

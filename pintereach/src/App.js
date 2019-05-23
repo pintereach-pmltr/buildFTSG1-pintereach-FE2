@@ -13,8 +13,8 @@ function App() {
       <div className="App">
         <Route exact path="/" component={LoginPage} />
         <Route path='/register' component={RegisterPage} />
-        <PrivateRoute path='/dashboard' component={Dashboard} />
-        <PrivateRoute path='/dashboard/:id' component={IndividualBoard} />
+        <PrivateRoute exact path='/dashboard' component={Dashboard} />
+        <Route path={`/dashboard/:id`} render={(props) => <IndividualBoard {...props}/>} />
       </div>
     </Router>
   );
