@@ -1,7 +1,29 @@
 import React, { Component } from 'react';
 import { NavLink, Link } from "react-router-dom";
+import {
+    logout
+  } from "../actions";
+import { connect } from "react-redux";
 
-export default class NavBar extends Component {
+
+class NavBar extends Component {
+
+    flip() {
+        if(localStorage.getItem('user id')) {
+            return (
+                <NavLink onClick={this.logout} className="nav-link" exact to="/">
+                Log Out
+               </NavLink>
+            )
+        } else {
+            return (
+                <NavLink className="nav-link" exact to="/login">
+                 Log In
+                </NavLink>
+            )
+        }
+    }
+
     render() {
         return (
                 <div className="navbar">
@@ -14,14 +36,24 @@ export default class NavBar extends Component {
                     </div>
 
             <div>
-                <NavLink onClick={this.logout} className="nav-link" exact to="/">
-                 Log Out
-                </NavLink>
                 <NavLink className="nav-link" to="/dashboard">
                 Dashboard
                 </NavLink>
+                <NavLink className="nav-link" to="/user">
+                Profile
+                </NavLink>
+                {this.flip()}
             </div>
             </div>
         )
     }
 }
+
+const mapStateToProps = state => ({
+
+  });
+
+export default connect(
+    mapStateToProps,
+    { logout }
+  )(NavBar);
