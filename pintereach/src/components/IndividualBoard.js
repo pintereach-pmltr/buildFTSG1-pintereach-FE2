@@ -30,11 +30,9 @@ class IndividualBoard extends React.Component {
 
   deleteArticle = id => {
     let pathname = this.props.location.pathname;
-    let pathArray = pathname.replace(/\D/g, "").then(() =>{
-      return     this.props.getArticles(pathArray);
-    })
+    let pathArray = pathname.replace(/\D/g, "")
+    this.props.getArticles(pathArray)
     this.props.deleteArticle(id);
-
   };
 
   editArticle = (event, article) => {
