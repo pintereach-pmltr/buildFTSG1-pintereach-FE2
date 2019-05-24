@@ -190,7 +190,7 @@ export const GET_USER_FAIL = 'GET_USER_FAIL'
 export const getUserInfo = user => dispatch => {
     dispatch({ type: GET_USER_INFO })
     axiosWithAuth()
-    .get(`http://pintereach0.herokuapp.com/api/users/${user}`)
+    .get(`https://pintereach0.herokuapp.com/api/users/${user}`)
     .then(res => {
         dispatch({ type: GET_USER_SUCCESS, payload: res.data })
     })
