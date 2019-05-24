@@ -2,7 +2,7 @@ import React from "react";
 // import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getArticles, getBoards, postArticle } from "../actions";
-import Loader from "react-loader-spinner";
+
 
 class EditArticle extends React.Component {
   state = {
@@ -14,6 +14,12 @@ class EditArticle extends React.Component {
     //set board_id to extracted location number (from individualboard component)
     //   board_id: this.props.board_id
   };
+
+//   editArticle = (id) => {
+//       debugger;
+//       console.log(this.props.editArticle)
+//     this.props.editArticle(this.state.articles);
+//   };
 
   handleChanges = event => {
     console.log(this.state.articles)
@@ -54,15 +60,9 @@ class EditArticle extends React.Component {
             value={this.state.articles.board_id}
             onChange={this.handleChanges}
           />
-          <button className="article-edit" onClick={() => this.editArticle(this.props.article)}>
+          <button className="article-edit" onClick={() => this.props.editArticle(this.props.article)}>
             {this.props.editingArticle ? (
-              <Loader
-                className="loader"
-                type="ThreeDots"
-                color="#ffffff"
-                height={20}
-                width={20}
-              />
+                'Save Changes'
             ) : (
               "Save Changes"
             )}

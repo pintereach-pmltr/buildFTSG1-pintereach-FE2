@@ -29,9 +29,11 @@ class IndividualBoard extends React.Component {
 
   deleteArticle = id => {
     let pathname = this.props.location.pathname;
-    let pathArray = pathname.replace(/\D/g, "");
+    let pathArray = pathname.replace(/\D/g, "").then(() =>{
+      return     this.props.getArticles(pathArray);
+    })
     this.props.deleteArticle(id);
-    this.props.getArticles(pathArray);
+
   };
 
   editArticle = (event, article) => {
@@ -104,7 +106,7 @@ class IndividualBoard extends React.Component {
               <div className="ind-article" key={article.id}>
                 <a
                   className="ind-link"
-                  href={`https://${article.url}`}
+                  href={`${article.url}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >

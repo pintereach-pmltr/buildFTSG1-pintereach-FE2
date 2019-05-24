@@ -56,7 +56,7 @@ class IndividualBoard extends React.Component {
           <input
           className='article-shown-input'
             required
-            placeholder="URL ex: www.google.com"
+            placeholder="URL ex: https://www.google.com"
             name="url"
             value={this.state.articles.url}
             onChange={this.handleChanges}
