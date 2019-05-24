@@ -1,6 +1,7 @@
 import React from "react";
-// import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../landing.css'
+import webview from './webview.png'
 
 class LandingPage extends React.Component {
   render() {
@@ -17,10 +18,16 @@ class LandingPage extends React.Component {
 
 
         </div>
-        <div>
+        <div className='landing-content'>
+            
             <h1 className='landing-header-title'>Welcome to Pintereach!</h1>
+           
             <p className='pg-copy'> Pintereach is a place for you to curate internet articles so you can easily access and share them at any time.</p>
-            <img src='.'></img>
+            <div className='button-box'>
+            <Link to='/login' className='landing-login'>Log In</Link>
+            <Link to='/register' className='landing-register'>Register</Link>
+            </div>
+            <img className='webview' src={webview} alt='pintereach web view'></img>
         </div>
       </div>
     );
