@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
 import { getUserInfo } from "../actions";
-
+import '../css/profile.css'
+import NavBar from './NavBar';
 class UserProfile extends Component {
 
     componentDidMount(){
@@ -12,7 +13,18 @@ class UserProfile extends Component {
     render() {
         return (
             <div>
-                <h2>Welcome {this.props.user_info.first_name} !</h2>
+                <NavBar />
+                <div className="profileStuff">
+                    <div className="proentry">
+                        <h2>First Name: </h2> {this.props.user_info.first_name}
+                    </div>
+                    <div className="proentry">
+                    	<h2>Last Name: </h2> {this.props.user_info.last_name}
+                    </div>
+                    <div className="proentry">
+                    	<h2>Email: </h2> {this.props.user_info.email}
+                    </div>
+                </div>
             </div>
         )
     }

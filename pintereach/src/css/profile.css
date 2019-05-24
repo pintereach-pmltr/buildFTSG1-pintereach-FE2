@@ -1,0 +1,15 @@
+.profileStuff {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    margin: auto;
+    width: 44%;
+}
+
+.proentry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+}

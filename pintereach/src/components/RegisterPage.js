@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { register } from '../actions/index'
 import { NavLink } from 'react-router-dom'
+import NavBar from './NavBar.js'
 
 class LoginPage extends React.Component {
     state = {
@@ -31,26 +32,7 @@ class LoginPage extends React.Component {
     render() {
         return (
           <div className='login-container'>
-            <div className="navbar">
-            <div className='logo-box'>
-            {" "}
-            <i className="fas fa-bookmark"></i>
-            <div className="logo">
-              <h1>Pintereach</h1>
-            </div>
-          </div>
-              <div>
-                <NavLink className="nav-link" exact to="/">
-                  Login
-                </NavLink>
-                <NavLink className="nav-link" to="/register">
-                  Register
-                </NavLink>
-                <NavLink className="nav-link" to="/dashboard">
-                  Dashboard
-                </NavLink>
-              </div>
-            </div>
+            <NavBar />
             <form className='login-form' onSubmit={this.register}>
             <h1>Register for Pintereach</h1> 
               <input placeholder='Username' name='username' required value={this.state.credentials.username} onChange={this.handleChanges} />
