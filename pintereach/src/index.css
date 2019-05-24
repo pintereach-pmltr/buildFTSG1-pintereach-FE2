@@ -45,7 +45,7 @@ code {
 .login-form {
   /* border: 1px solid red; */
   width: 400px;
-  height: 300px;
+  height: 50%;
   margin-top: 2rem;
   border-radius: 10px;
   display: flex;
@@ -80,6 +80,7 @@ code {
   border-radius: 3px;
   font-size: 1rem;
   margin-top: 1rem;
+  margin-bottom: 22px;
 }
 .login-form button:hover {
   background: rgba(136, 204, 255, 0.8);
