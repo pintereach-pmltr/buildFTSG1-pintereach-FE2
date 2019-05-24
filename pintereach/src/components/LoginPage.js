@@ -40,7 +40,7 @@ class LoginPage extends React.Component {
           </div>
 
           <div>
-            <NavLink className="nav-link" exact to="/">
+            <NavLink className="nav-link" exact to="/login">
               Login
             </NavLink>
             <NavLink className="nav-link" to="/register">

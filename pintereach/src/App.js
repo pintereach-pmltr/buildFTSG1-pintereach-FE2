@@ -6,12 +6,14 @@ import RegisterPage from './components/RegisterPage'
 import Dashboard from "./components/Dashboard";
 import PrivateRoute from "./PrivateRoute";
 import IndividualBoard from "./components/IndividualBoard";
+import LandingPage from "./components/Landing";
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <Route exact path="/" component={LoginPage} />
+        <Route exact path='/' component={LandingPage} />
+        <Route exact path="/login" component={LoginPage} />
         <Route path='/register' component={RegisterPage} />
         <PrivateRoute exact path='/dashboard' component={Dashboard} />
         <Route path={`/dashboard/:id`} render={(props) => <IndividualBoard {...props}/>} />
