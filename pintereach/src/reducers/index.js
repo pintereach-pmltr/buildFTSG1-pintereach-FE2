@@ -35,6 +35,7 @@ import {
 const initialState = {
   boards: [],
   articles: [],
+  user_info: {},
   fetchingArticles: false,
   fetchingBoards: false,
   isLoggingIn: false,

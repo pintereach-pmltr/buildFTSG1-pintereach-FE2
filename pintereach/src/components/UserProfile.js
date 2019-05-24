@@ -3,21 +3,16 @@ import { connect } from "react-redux";
 import { getUserInfo } from "../actions";
 
 class UserProfile extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            user_id: localStorage.getItem('user_id')
-        }
-    }
 
     componentDidMount(){
-        this.props.getUserInfo(this.state.user_id)
+        const curuser = localStorage.getItem('user id')
+        this.props.getUserInfo(curuser)
     }
 
     render() {
         return (
             <div>
-                {this.props.user_info.first_name}
+                <h2>Welcome {this.props.user_info.first_name} !</h2>
             </div>
         )
     }
