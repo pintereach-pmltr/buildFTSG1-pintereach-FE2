@@ -346,3 +346,43 @@ code {
 .landing-header {
   font-family: "Ubuntu", sans-serif;
 }
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  margin: auto;
+  width: 32%;
+  min-width: 400px;
+  /* border: 1px solid red; */
+  margin-top: 2rem;
+  border-radius: 10px;
+  box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.1), 0px 2px 4px rgba(0, 0, 0, 0.05),
+  2px 0px 4px rgba(0, 0, 0, 0.1), -2px 0px 4px rgba(0, 0, 0, 0.05);
+}
+.profile-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+.profile-entry h4 {
+  color: #999999;
+  font-size: 1rem;
+}
+.editBtn {
+  width: 77%;
+  height: 3rem;
+  background-color: #1e90ff;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  font-size: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 22px;
+}
+.editBtn:hover {
+  background: rgba(136, 204, 255, 0.8);
+  cursor: pointer;
+}

@@ -42,13 +42,13 @@ class Dashboard extends React.Component {
                   <i className="fas fa-clipboard-list" id="board-icon" />
                   <h1>{board.board_title}</h1>
                 </Link>
-                <button
+                {/* <button
                   className="board-delete"
                   to="/dashboard"
                   onClick={() => this.deleteBoard(board.id)}
                 >
                   Delete Board
-                </button>
+                </button> */}
               </div>
             );
           })}

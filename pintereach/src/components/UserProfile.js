@@ -15,15 +15,15 @@ class UserProfile extends Component {
         return (
             <div>
                 <NavBar />
-                <div className="profileStuff">
-                    <div className="proentry">
-                        <h2>First Name: </h2> {this.props.user_info.first_name}
+                <div className="profile-container">
+                    <div className="profile-entry">
+                        <h4>First Name: </h4><h2>{this.props.user_info.first_name}</h2> 
                     </div>
-                    <div className="proentry">
-                    	<h2>Last Name: </h2> {this.props.user_info.last_name}
+                    <div className="profile-entry">
+                    	<h4>Last Name: </h4> <h2>{this.props.user_info.last_name}</h2>
                     </div>
-                    <div className="proentry">
-                    	<h2>Email: </h2> {this.props.user_info.email}
+                    <div className="profile-entry">
+                    	<h4>Email: </h4>  <h2>{this.props.user_info.email}</h2>
                     </div>
                     <NavLink exact to="/editUser">
                         <div className="editHold"><button className="editBtn">Edit User</button></div>

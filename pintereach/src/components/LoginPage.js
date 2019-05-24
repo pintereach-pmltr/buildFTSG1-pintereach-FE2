@@ -35,7 +35,7 @@ class LoginPage extends React.Component {
         <form className="login-form" onSubmit={this.login}>
           <h1>Log In to Pintereach</h1>
           <input name='username' value={this.state.credentials.username} onChange={this.handleChanges} placeholder="Username" />
-          <input name='password' value={this.state.credentials.password} onChange={this.handleChanges}  placeholder="Password" />
+          <input type='password' name='password' value={this.state.credentials.password} onChange={this.handleChanges}  placeholder="Password" />
           <button>Log In</button>
         </form>
       </div>

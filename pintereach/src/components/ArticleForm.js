@@ -13,7 +13,6 @@ class IndividualBoard extends React.Component {
     }
   };
 
-
   addArticle = event => {
     // const user_id = localStorage.getItem("user id");
     event.preventDefault();
