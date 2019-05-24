@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from "react-redux";
 import { getUserInfo } from "../actions";
 
 class UserProfile extends Component {
