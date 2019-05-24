@@ -199,3 +199,20 @@ export const getUserInfo = user => dispatch => {
         console.log(err)
     })
 }
+
+export const EDIT_USER_START = 'EDIT_USER_START'
+export const EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS'
+export const EDIT_USER_FAIL = 'EDIT_USER_FAIL'
+
+export const editUser = user => dispatch => {
+    dispatch({ type: EDIT_USER_START })
+    axiosWithAuth()
+    .put(`https://pintereach0.herokuapp.com/api/users/${user.id}`, user)
+    .then(res => {
+        dispatch({ type: EDIT_USER_SUCCESS, payload: res.data })
+    })
+    .catch(err => {
+        dispatch({ type: EDIT_USER_FAIL })
+        console.log(err)
+    })
+}

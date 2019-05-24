@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
 import { getUserInfo } from "../actions";
+import { NavLink, Link } from "react-router-dom";
 import '../css/profile.css'
 import NavBar from './NavBar';
 class UserProfile extends Component {
@@ -24,6 +25,9 @@ class UserProfile extends Component {
                     <div className="proentry">
                     	<h2>Email: </h2> {this.props.user_info.email}
                     </div>
+                    <NavLink exact to="/editUser">
+                        <div className="editHold"><button className="editBtn">Edit User</button></div>
+                    </NavLink>
                 </div>
             </div>
         )

@@ -8,6 +8,7 @@ import PrivateRoute from "./PrivateRoute";
 import IndividualBoard from "./components/IndividualBoard";
 import LandingPage from "./components/Landing";
 import UserProfile from "./components/UserProfile";
+import EditUser from "./components/EditUser";
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
         <Route exact path='/' component={LandingPage} />
         <Route exact path="/login" component={LoginPage} />
         <Route path='/register' component={RegisterPage} />
-        <Route path ='/user' component={UserProfile} />
+        <PrivateRoute exact path ='/user' component={UserProfile} />
+        <PrivateRoute exact path ='/editUser' component={EditUser} />
         <PrivateRoute exact path='/dashboard' component={Dashboard} />
         <Route path={`/dashboard/:id`} render={(props) => <IndividualBoard {...props}/>} />
       </div>

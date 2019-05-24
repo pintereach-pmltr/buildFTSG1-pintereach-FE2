@@ -29,7 +29,10 @@ import {
   EDIT_ARTICLE_FAIL,
   GET_USER_INFO,
   GET_USER_SUCCESS,
-  GET_USER_FAIL
+  GET_USER_FAIL,
+  EDIT_USER_START,
+  EDIT_USER_SUCCESS,
+  EDIT_USER_FAIL
 } from "../actions";
 
 const initialState = {
@@ -38,6 +41,7 @@ const initialState = {
   user_info: {},
   fetchingArticles: false,
   fetchingBoards: false,
+  isEditing: false,
   isLoggingIn: false,
   error: "",
   postingArticles: false,
@@ -217,6 +221,21 @@ export const rootReducer = (state = initialState, action) => {
       case GET_USER_FAIL:
         return {
           ...state
+        }
+      case EDIT_ARTICLE_START:
+        return {
+          ...state,
+          isEditing: true
+        }
+      case EDIT_USER_SUCCESS:
+        return {
+          ...state,
+          user_info: action.payload
+        }
+      case EDIT_USER_FAIL:
+        return {
+          ...state,
+          error: action.payload
         }
     default:
       return state;
