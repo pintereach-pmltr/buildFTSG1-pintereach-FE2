@@ -56,7 +56,7 @@ class LoginPage extends React.Component {
               <input placeholder='Username' name='username' required value={this.state.credentials.username} onChange={this.handleChanges} />
               <input placeholder='Password' name='password' required type="password" value={this.state.credentials.password} onChange={this.handleChanges}/>
               <input placeholder='First Name' name='first_name' required value={this.state.credentials.first_name} onChange={this.handleChanges} />
-              <input placeholder='Last Name' name='last_name' required type="last_name" value={this.state.credentials.password} onChange={this.handleChanges}/>
+              <input placeholder='Last Name' name='last_name' required type="last_name" value={this.state.credentials.last_name} onChange={this.handleChanges}/>
               <input placeholder='Email' name='email' required value={this.state.credentials.email} onChange={this.handleChanges} />
               <button className='register-button'>Register</button>
             </form>

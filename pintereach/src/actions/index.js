@@ -182,3 +182,20 @@ export const editArticle = article => dispatch => {
     })
 }
 
+
+export const GET_USER_INFO = 'GET_USER_INFO'
+export const GET_USER_SUCCESS = 'GET_USER_SUCCESS'
+export const GET_USER_FAIL = 'GET_USER_FAIL'
+
+export const getUserInfo = user => dispatch => {
+    dispatch({ type: GET_USER_INFO })
+    axiosWithAuth()
+    .get(`http://pintereach0.herokuapp.com/api/users/${user}`)
+    .then(res => {
+        dispatch({ type: GET_USER_SUCCESS, payload: res.data })
+    })
+    .catch(err => {
+        dispatch({ type: GET_USER_FAIL })
+        console.log(err)
+    })
+}
