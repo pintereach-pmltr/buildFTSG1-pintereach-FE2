@@ -11,6 +11,7 @@ import {
 } from "../actions";
 import ArticleForm from "./ArticleForm";
 import EditArticle from "./EditArticle";
+import NavBar from "./NavBar";
 
 class IndividualBoard extends React.Component {
   state = {
@@ -55,23 +56,7 @@ class IndividualBoard extends React.Component {
     console.log(pathArray);
     return (
       <div className="ind-board-container">
-        <div className="navbar">
-          <div className="logo-box">
-            {" "}
-            <i className="fas fa-bookmark" />
-            <div className="logo">
-              <h1>Pintereach</h1>
-            </div>
-          </div>
-          <div>
-            <NavLink onClick={this.logout} className="nav-link" exact to="/">
-              Log Out
-            </NavLink>
-            <NavLink className="nav-link" to="/dashboard">
-              Dashboard
-            </NavLink>
-          </div>
-        </div>
+        <NavBar />
         <div className="sub-nav-bar-article">
           {/* <NavLink className="sub-link" to="/dashboard/all">
             ALL

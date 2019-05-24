@@ -1,8 +1,9 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { logout, getBoards, deleteBoard } from "../actions";
+import { getBoards, deleteBoard } from "../actions";
 import BoardForm from "./BoardForm";
+import NavBar from "./NavBar";
 
 class Dashboard extends React.Component {
   componentDidMount() {
@@ -10,10 +11,6 @@ class Dashboard extends React.Component {
     this.props.getBoards(user_id);
     // console.log(id);
   }
-
-  logout = () => {
-    this.props.logout();
-  };
 
   deleteBoard = id => {
     // const user_id = localStorage.getItem("user id");
@@ -26,24 +23,7 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div className="dashboard-container">
-        <div className="navbar">
-          <div className="logo-box">
-            {" "}
-            <i className="fas fa-bookmark" />
-            <div className="logo">
-              <h1>Pintereach</h1>
-            </div>
-          </div>
-
-          <div>
-            <NavLink onClick={this.logout} className="nav-link" exact to="/">
-              Log Out
-            </NavLink>
-            <NavLink className="nav-link" to="/dashboard">
-              Dashboard
-            </NavLink>
-          </div>
-        </div>
+        <NavBar />
         <div className="form-container">
           <BoardForm />
         </div>
@@ -90,5 +70,5 @@ console.log();
 
 export default connect(
   mapStateToProps,
-  { logout, getBoards, deleteBoard }
+  { getBoards, deleteBoard }
 )(Dashboard);

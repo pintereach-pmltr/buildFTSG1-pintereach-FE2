@@ -1,0 +1,77 @@
+.landing-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 0;
+}
+.pg-copy {
+    color: #999999;
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10%;
+    width: 70%;
+}
+.landing-header-title {
+    font-family: "Ubuntu", sans-serif;
+    font-size: 3.6rem;
+    color: #4f4f4f;
+}
+.webview {
+    width: 40%;
+}
+.landing-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.landing-login {
+    width: 230px;
+    height: 4rem;
+    font-size: 1.4rem;
+    border-radius: 7px;
+    background:  #1E90FF;
+    color: white;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+.landing-login:hover {
+    width: 230px;
+    height: 4rem;
+    font-size: 1.4rem;
+    border-radius: 7px;
+    background: rgba(136, 204, 255, 0.2);
+    color: #1E90FF;
+    border: none;
+    cursor: pointer;
+}
+.landing-register {
+    width: 230px;
+    font-size: 1.4rem;
+    border-radius: 7px;
+    color:  #1E90FF;
+    border: 2px solid  #1E90FF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+.landing-register:hover {
+    width: 230px;
+    font-size: 1.4rem;
+    border-radius: 7px;
+    background: rgba(136, 204, 255, 0.5);
+    cursor: pointer;
+
+}
+.button-box {
+    /* border: 1px solid red; */
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+}
