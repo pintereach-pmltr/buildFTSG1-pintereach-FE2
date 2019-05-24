@@ -1,10 +1,22 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import { getArticles, getBoards, postArticle, logout, deleteArticle } from "../actions";
+import {
+  getArticles,
+  getBoards,
+  postArticle,
+  logout,
+  deleteArticle,
+  editArticle
+} from "../actions";
 import ArticleForm from "./ArticleForm";
+import EditArticle from "./EditArticle";
 
 class IndividualBoard extends React.Component {
+  state = {
+    editingArticleID: null,
+    editingArticle: null
+  };
   componentDidMount() {
     let pathname = this.props.location.pathname;
     let pathArray = pathname.replace(/\D/g, "");
@@ -12,15 +24,24 @@ class IndividualBoard extends React.Component {
     this.props.getArticles(pathArray);
   }
   logout = () => {
-      this.props.logout();
-  }
+    this.props.logout();
+  };
 
   deleteArticle = id => {
     let pathname = this.props.location.pathname;
-    let pathArray = pathname.replace(/\D/g, "");
-      this.props.deleteArticle(id);
-      this.props.getArticles(pathArray)
-  }
+    let pathArray = pathname.replace(/\D/g, "").then(() =>{
+      return     this.props.getArticles(pathArray);
+    })
+    this.props.deleteArticle(id);
+
+  };
+
+  editArticle = (event, article) => {
+    event.preventDefault();
+    this.props
+      .editArticle(article)
+      .then(() => this.setState({ editingArticleID: null }));
+  };
 
   render() {
     //fetch location prop from router
@@ -71,14 +92,40 @@ class IndividualBoard extends React.Component {
         </div>
         <div className="link-container">
           {this.props.articles.map(article => {
-            console.log(article.url);
+            if (this.state.editingArticleID === article.id) {
+              return (
+                <EditArticle
+                  key={article.id}
+                  article={article}
+                  editArticle={this.editArticle}
+                />
+              );
+            }
+            console.log(article.id);
             return (
               <div className="ind-article" key={article.id}>
-                <a className="ind-link" href={`https://${article.url}`} target="_blank">
-                  <i class="fas fa-newspaper" id="article-icon" />
+                <a
+                  className="ind-link"
+                  href={`${article.url}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="fas fa-newspaper" id="article-icon" />
                   <h1 className="article-title">{article.article_label}</h1>
                 </a>
-                <button className='article-delete' onClick={() => this.deleteArticle(article.id)}>Delete</button>
+                <i
+                  onClick={() =>
+                    this.setState({ editingArticleID: article.id })
+                  }
+                  className="fas fa-pencil-alt"
+                  id="pencil-edit"
+                />
+                <button
+                  className="article-delete"
+                  onClick={() => this.deleteArticle(article.id)}
+                >
+                  Delete
+                </button>
               </div>
             );
           })}
@@ -97,5 +144,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getArticles, getBoards, postArticle, logout, deleteArticle }
+  { getArticles, getBoards, postArticle, logout, deleteArticle, editArticle }
 )(IndividualBoard);

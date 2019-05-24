@@ -316,3 +316,29 @@ code {
   color: #c4c4c4;
   background: #efefef;
 }
+.loader {
+  margin-top: 1rem;
+}
+#pencil-edit {
+  font-size: 1.2rem;
+  margin-right: 1.4rem;
+  color: #999999;
+}
+#pencil-edit:hover {
+  color: #02C39A;
+  cursor: pointer;
+}
+.article-edit {
+  border: 1px solid #02C39A;
+  border-radius: 4px;
+  margin-right: 1rem;
+  height: 1.5rem;
+  width: 7rem;
+  outline: none;
+  color: #02C39A;
+}
+.article-edit:hover {
+  cursor: pointer;
+  color: #ffffff;
+  background: #02C39A;
+}

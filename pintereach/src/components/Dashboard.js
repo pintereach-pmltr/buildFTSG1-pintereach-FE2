@@ -16,11 +16,11 @@ class Dashboard extends React.Component {
   };
 
   deleteBoard = id => {
-    const user_id = localStorage.getItem("user id");
-    this.props.deleteBoard(id);
+    // const user_id = localStorage.getItem("user id");
+    this.props.deleteBoard(id)
     // debugger;
-    this.props.getBoards(user_id);
-    console.log(id);
+    // this.props.getBoards(user_id);
+    // console.log(id);
   };
 
   render() {
@@ -47,11 +47,13 @@ class Dashboard extends React.Component {
         <div className="form-container">
           <BoardForm />
         </div>
-        {/* {this.props.fetchingBoards ? <h1>Loading boards...</h1> : null} */}
+        {/* {this.props.fetchingBoards ? (
+          <Loader className='loader' type="ThreeDots" color="#2b2d42" height={50} width={50} />
+        ) : null} */}
         <div className="board-container">
           {this.props.boards.map(board => {
             return (
-              <div className="ind-board">
+              <div className="ind-board" key={board.id}>
                 <Link
                   className="ind-board"
                   to={`/dashboard/${board.id}`}
